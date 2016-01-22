@@ -1,9 +1,8 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015��12��12������5:23:56
- * @Desc:
- * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
 package com.betl.hbase.mr.mapper;
 
@@ -18,10 +17,10 @@ import org.apache.hadoop.mapreduce.Mapper;
  * @author Administrator
  *
  */
-public class ReadHdfsMapper extends Mapper<LongWritable,Text,Text,Text>{
-	
-	public void map(LongWritable key,Text value,Context context) throws IOException, InterruptedException{
-		String[] splits=value.toString().split("\t");
+public class ReadHdfsMapper extends Mapper<LongWritable, Text, Text, Text> {
+
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+		String[] splits = value.toString().split("\t");
 		context.write(new Text(DigestUtils.md5Hex(splits[0])), value);
 	}
 }

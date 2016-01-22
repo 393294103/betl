@@ -1,13 +1,12 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015年12月21日下午6:33:52
- * @Desc:
- * @Copyright (c) 2014, 北京集奥聚合科技有限公司 All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.core.bolt;
+package com.getl.gstorm.bolt;
 
-import com.getl.gstorm.core.common.CommonUtil;
+import com.getl.gstorm.common.CommonUtil;
 
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;

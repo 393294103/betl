@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015年12月22日下午3:00:01
- * @Desc:
- * @Copyright (c) 2014, 北京集奥聚合科技有限公司 All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.core.common;
+package com.getl.gstorm.common;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

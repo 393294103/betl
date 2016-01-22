@@ -1,9 +1,8 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015��12��14������12:55:33
- * @Desc:
- * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
 package com.betl.hbase.client;
 

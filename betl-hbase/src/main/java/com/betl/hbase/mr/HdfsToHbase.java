@@ -1,13 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015��12��12������5:27:58
- * @Desc:
- * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
 package com.betl.hbase.mr;
-
-
 
 import java.io.IOException;
 
@@ -27,30 +24,29 @@ import com.betl.hbase.mr.reducer.WriteHbaseReducer;
  *
  */
 public class HdfsToHbase {
-	
+
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		System.setProperty("hadoop.home.dir", "D:\\work_soft\\hadoop-common-2.2.0-bin-master");
 		System.setProperty("HADOOP_USER_NAME", "hdfs");
 
-        Configuration conf = HBaseConfiguration.create();
-        conf.set("hbase.master", "10.111.32.202");  
-        conf.set("hbase.zookeeper.quorum", "10.111.32.202");
-        conf.set("hbase.zookeeper.property.clientPort", "2181");
-        
-        Job job = new Job(conf,"Hbase");
-        job.setJarByClass(HdfsToHbase.class);
-        
-       
-        job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
-        FileInputFormat.addInputPath(job, new Path("hdfs://10.111.32.202:8020/mysql/raw/sinanews"));
-        
-        job.setMapperClass(ReadHdfsMapper.class);
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(Text.class);
-        
-        TableMapReduceUtil.initTableReducerJob("sinanews", WriteHbaseReducer.class, job);
-        
-       job.waitForCompletion(true);
+		Configuration conf = HBaseConfiguration.create();
+		conf.set("hbase.master", "10.111.32.202");
+		conf.set("hbase.zookeeper.quorum", "10.111.32.202");
+		conf.set("hbase.zookeeper.property.clientPort", "2181");
+
+		Job job = new Job(conf, "Hbase");
+		job.setJarByClass(HdfsToHbase.class);
+
+		job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
+		FileInputFormat.addInputPath(job, new Path("hdfs://10.111.32.202:8020/mysql/raw/sinanews"));
+
+		job.setMapperClass(ReadHdfsMapper.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(Text.class);
+
+		TableMapReduceUtil.initTableReducerJob("sinanews", WriteHbaseReducer.class, job);
+
+		job.waitForCompletion(true);
 	}
 
 }

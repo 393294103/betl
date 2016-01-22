@@ -1,4 +1,10 @@
-package com.getl.gstorm.core.topology;
+/**
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016年1月22日下午5:21:03
+ * @Copyright ZHL All Rights Reserved.
+ */
+package com.getl.gstorm.topology;
 
 import org.apache.storm.hdfs.bolt.HdfsBolt;
 import org.apache.storm.hdfs.bolt.format.DefaultFileNameFormat;
@@ -26,8 +32,8 @@ import backtype.storm.spout.SchemeAsMultiScheme;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
 
-import com.getl.gstorm.core.bolt.MsgScheme;
-import com.getl.gstorm.core.bolt.MsgSplitBolt;
+import com.getl.gstorm.bolt.MsgScheme;
+import com.getl.gstorm.bolt.MsgSplitBolt;
 
 public class NewsTopolgy {
 

@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015Äê12ÔÂ23ÈÕÏÂÎç5:24:42
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.elastic.core.client;
+package com.betl.elastic.client;
 
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
@@ -19,8 +18,8 @@ public final class ElasticFactory {
 	 static Client client=null;
 	
 	public static  Client getClient(){
-		// ÉèÖÃclient.transport.sniffÎªtrueÀ´Ê¹¿Í»§¶ËÈ¥ĞáÌ½Õû¸ö¼¯ÈºµÄ×´Ì¬£¬°Ñ¼¯ÈºÖĞÆäËü»úÆ÷µÄipµØÖ·¼Óµ½¿Í»§¶ËÖĞ£¬
-        // ÕâÑù×öµÄºÃ´¦ÊÇÒ»°ãÄã²»ÓÃÊÖ¶¯ÉèÖÃ¼¯ÈºÀïËùÓĞ¼¯ÈºµÄipµ½Á¬½Ó¿Í»§¶Ë£¬Ëü»á×Ô¶¯°ïÄãÌí¼Ó£¬²¢ÇÒ×Ô¶¯·¢ÏÖĞÂ¼ÓÈë¼¯ÈºµÄ»úÆ÷¡£
+		// ï¿½ï¿½ï¿½ï¿½client.transport.sniffÎªtrueï¿½ï¿½Ê¹ï¿½Í»ï¿½ï¿½ï¿½È¥ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ñ¼ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ö·ï¿½Óµï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄºÃ´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ã²»ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Ğ¼ï¿½Èºï¿½ï¿½ipï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Í»ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ë¼¯Èºï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½
 		Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name","escloud").put("client.transport.sniff", true).build();
          client = new TransportClient(settings)
         .addTransportAddress(new InetSocketTransportAddress("10.111.32.90", 9300))

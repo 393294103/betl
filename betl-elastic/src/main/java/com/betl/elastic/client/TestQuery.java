@@ -1,13 +1,13 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2015Äê12ÔÂ23ÈÕÏÂÎç4:39:30
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.elastic.core.client;
+package com.betl.elastic.client;
 
 import java.net.UnknownHostException;
+
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -71,9 +71,6 @@ public class TestQuery {
 
 	//@Test
 	public void testMatch(){
-		
-		
-		
 		MatchQueryBuilder matchQuery1=QueryBuilders
 				.matchQuery("mdn", "18036404545").operator(Operator.OR);
 		MatchQueryBuilder matchQuery2=QueryBuilders
