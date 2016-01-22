@@ -1,20 +1,20 @@
 
-package com.gtfd.ghbase.client.model;
+package com.betl.hbase.client.model;
 
-import com.gtfd.ghbase.client.util.RedMD5Util;
+import com.betl.hbase.client.util.RedMD5Util;
 
 
 /**
  * Copyright:   Copyright (c)2015
  * Company:     redhadoop.com
  * @version:    v1.0
- * Create at:   2015å¹?æœ?5æ—¥ä¸‹å?:35:52
+ * Create at:   2015ï¿½?ï¿½?5æ—¥ä¸‹ï¿½?:35:52
  * Description:
  *
  * Modification History:
  * Date    Author                        Version     Description
  * ----------------------------------------------------------------- 
- * 2015å¹?æœ?5æ—?zhanghelin@redhadoop.com         1.0       1.0 Version
+ * 2015ï¿½?ï¿½?5ï¿½?zhanghelin@redhadoop.com         1.0       1.0 Version
  */
 
 public class Document {

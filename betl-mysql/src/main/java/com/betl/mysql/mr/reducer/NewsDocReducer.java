@@ -1,4 +1,4 @@
-package com.betl.mysql.core.reducer;
+package com.betl.mysql.mr.reducer;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import com.betl.mysql.core.model.NewsDoc;
+import com.betl.mysql.mr.model.NewsDoc;
 
 /**
  * @author Administrator

@@ -17,8 +17,8 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-import com.betl.common.core.option.ConfOption;
 import com.betl.mysql.core.product.BeanTest;
+import com.betl.option.ConfOption;
 
 public class AsmAop extends ClassLoader implements Opcodes {
 

@@ -1,4 +1,4 @@
-package com.betl.mysql.job;
+package com.betl.mysql.mr;
 
 import java.io.IOException;
 
@@ -11,9 +11,9 @@ import org.apache.hadoop.mapred.lib.db.DBInputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.betl.mysql.core.mapper.NewsDocMapper;
-import com.betl.mysql.core.model.NewsDoc;
-import com.betl.mysql.core.reducer.NewsDocReducer;
+import com.betl.mysql.mr.mapper.NewsDocMapper;
+import com.betl.mysql.mr.model.NewsDoc;
+import com.betl.mysql.mr.reducer.NewsDocReducer;
 
 public class MysqlToHdfs {
 

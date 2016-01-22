@@ -1,4 +1,4 @@
-package com.gtfd.ghbase.client.util;
+package com.betl.hbase.client.util;
 
 import java.security.MessageDigest;
 
@@ -25,7 +25,7 @@ public class RedMD5Util {
 			int val = ((int) md5Bytes[i]) & 0xff;
 			if (val < 16)
 				hexValue.append("0");
-			//将byte类型数据转换�?6进制数据，并拼接成字符串
+			//将byte类型数据转换�?6进制数据，并拼接成字符串
 			hexValue.append(Integer.toHexString(val));
 		}
 		return hexValue.toString();

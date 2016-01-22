@@ -16,7 +16,7 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-import com.betl.common.core.option.ConfOption;
+import com.betl.option.ConfOption;
 
 /**
  * @author Administrator

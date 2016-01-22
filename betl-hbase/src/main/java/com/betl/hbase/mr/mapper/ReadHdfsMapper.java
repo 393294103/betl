@@ -1,11 +1,11 @@
 /**
  * @Email:zhanghelin@geotmt.com
  * @Author:Zhl
- * @Date:2015Äê12ÔÂ12ÈÕÏÂÎç5:23:56
+ * @Date:2015ï¿½ï¿½12ï¿½ï¿½12ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5:23:56
  * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓÐÏÞ¹«Ë¾ All Rights Reserved.
+ * @Copyright (c) 2014, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¾ÛºÏ¿Æ¼ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾ All Rights Reserved.
  */
-package com.gtfd.ghbase.mr.mapper;
+package com.betl.hbase.mr.mapper;
 
 import java.io.IOException;
 

@@ -1,11 +1,11 @@
 /**
  * @Email:zhanghelin@geotmt.com
  * @Author:Zhl
- * @Date:2015��12��14������12:55:33
+ * @Date:2015��12��14������12:55:33
  * @Desc:
- * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
+ * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
  */
-package com.gtfd.ghbase.client;
+package com.betl.hbase.client;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -22,8 +22,8 @@ import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException;
 import org.apache.hadoop.hbase.client.Scan;
 
-import com.gtfd.ghbase.client.model.Document;
-import com.gtfd.ghbase.client.util.RedMD5Util;
+import com.betl.hbase.client.model.Document;
+import com.betl.hbase.client.util.RedMD5Util;
 
 /**
  * @author Administrator
@@ -65,7 +65,7 @@ public class HbaseClient {
 
 	public boolean add(Document doc) {
 		Put put = new Put(doc.getUid().getBytes());//
-        put.add(COL_URL.getBytes(), null, doc.getUrl().getBytes());// 本行数据的第�??��  
+        put.add(COL_URL.getBytes(), null, doc.getUrl().getBytes());// 本行数据的第�??��  
         put.add(COL_TITLE.getBytes(), null, doc.getTitle().getBytes());// 本行数据的第三列  
         put.add(COL_CONTENT.getBytes(), null, doc.getContent().getBytes());// 本行数据的第三列  
 		list.add(put);
@@ -210,7 +210,7 @@ public class HbaseClient {
 		System.out.println("--------------------------------------");
 		System.out.println(ih.ifExists("http://huaxi.media.baidu.com/article/18224361332895847848"));
 		*/
-		//ih.add(new Document("http://huaxi.media.baidu.com/article/18224361332895847848","广东天津福建自贸区�?体方案获�??四地自贸区出征新使命","按照以往流程，自由贸易试验区总体方案经由部委提交国务院，由国务院审批通过即可。�?从中央政治局�??��审议有关方案来看，说明中央非常重视自贸区改革，不仅把自贸区改革放在国家层面，而且对四地自贸区在新常�?下寄予厚望�?”孙元欣说�?"));
+		//ih.add(new Document("http://huaxi.media.baidu.com/article/18224361332895847848","广东天津福建自贸区�?体方案获�??四地自贸区出征新使命","按照以往流程，自由贸易试验区总体方案经由部委提交国务院，由国务院审批通过即可。�?从中央政治局�??��审议有关方案来看，说明中央非常重视自贸区改革，不仅把自贸区改革放在国家层面，而且对四地自贸区在新常�?下寄予厚望�?”孙元欣说�?"));
 		ih.scan();
 	}
 	

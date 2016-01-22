@@ -1,5 +1,5 @@
 
-package com.betl.mysql.core.model;
+package com.betl.mysql.mr.model;
 
 import java.io.DataInput;
 import java.io.DataOutput;

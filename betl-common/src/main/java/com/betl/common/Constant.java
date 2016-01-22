@@ -5,7 +5,7 @@
  * @Desc:
  * @Copyright (c) 2014, �������¾ۺϿƼ����޹�˾ All Rights Reserved.
  */
-package com.betl.common.core.common;
+package com.betl.common;
 
 /**
  * @author Administrator
