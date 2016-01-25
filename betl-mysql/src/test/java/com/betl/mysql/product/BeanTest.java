@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2016Äê1ÔÂ13ÈÕÉÏÎç10:40:22
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.core.product;
+package com.betl.mysql.product;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -15,22 +14,11 @@ import org.objectweb.asm.Opcodes;
 
 public class BeanTest extends ClassLoader implements Opcodes {
 
-	/*
-	 * Éú³ÉÒÔÏÂÀàµÄ×Ö½ÚÂë
-	 * 
-	 * public class Person {
-	 * 
-	 * 		@NotNull
-	 * 		public String name£»
-	 * 
-	 * }
-	 */
+	
 
 	public static void main(String[] args) throws Exception {
 		
 		/********************************class***********************************************/
-
-		// ´´½¨Ò»¸öClassWriter, ÒÔÉú³ÉÒ»¸öĞÂµÄÀà
 
 		ClassWriter cw = new ClassWriter(0);
 		cw.visit(V1_6, ACC_PUBLIC, "com/pansoft/espdb/bean/Person", null, "java/lang/Object", null);
@@ -49,7 +37,7 @@ public class BeanTest extends ClassLoader implements Opcodes {
 		
 		/*************************************field******************************************/
 	
-		//Éú³ÉString name×Ö¶Î
+		
 		FieldVisitor  fv = cw.visitField(ACC_PUBLIC, "name", "Ljava/lang/String;", null, null);
 		AnnotationVisitor  av = fv.visitAnnotation("LNotNull;", true);
 		av.visit("value", "abc");
@@ -57,8 +45,7 @@ public class BeanTest extends ClassLoader implements Opcodes {
 		fv.visitEnd();
 
 		
-		
-		//Ìí¼Óadd·½·¨
+
 		
 		
 		

@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2016Äê1ÔÂ13ÈÕÏÂÎç6:45:48
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.core.product;
+package com.betl.mysql.product;
 
 /**
  * @author Administrator

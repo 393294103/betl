@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2016Äê1ÔÂ13ÈÕÏÂÎç4:52:38
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.core.conf;
+package com.betl.mysql.conf;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -120,7 +119,7 @@ public class Test3 extends ClassLoader implements Opcodes {
 		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 		cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER, "Table", null, "java/lang/Object", new String[] { "org/apache/hadoop/io/Writable", "org/apache/hadoop/mapred/lib/db/DBWritable" });
 
-		// ¿Õ¹¹Ôì
+		// ï¿½Õ¹ï¿½ï¿½ï¿½
 		MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
 		mv.visitVarInsn(ALOAD, 0);
 		mv.visitMethodInsn(INVOKEINTERFACE, "java/lang/Object", "<init>", "()V");
@@ -128,23 +127,23 @@ public class Test3 extends ClassLoader implements Opcodes {
 		mv.visitMaxs(1, 1);
 		mv.visitEnd();
 
-		// ¸øÕâ¸öÀàÌí¼ÓÒ»Ğ©field
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ğ©field
 
-		// Éú³ÉString name×Ö¶Î
+		// ï¿½ï¿½ï¿½ï¿½String nameï¿½Ö¶ï¿½
 		FieldVisitor fv = cw.visitField(ACC_PUBLIC, "url", "Ljava/lang/String;", null, null);
 		// AnnotationVisitor av = fv.visitAnnotation("LNotNull;", true);
 		// av.visit("value", "");
 		// av.visitEnd();
 		fv.visitEnd();
 
-		// Éú³ÉString name×Ö¶Î
+		// ï¿½ï¿½ï¿½ï¿½String nameï¿½Ö¶ï¿½
 		FieldVisitor fv2 = cw.visitField(ACC_PUBLIC, "title", "Ljava/lang/String;", null, null);
 		// AnnotationVisitor av2 = fv.visitAnnotation("LNotNull;", true);
 		// av2.visit("value", "");
 		// av2.visitEnd();
 		fv2.visitEnd();
 
-		// Éú³É·½·¨
+		// ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½
 		i = 8;
 		j = 9;
 

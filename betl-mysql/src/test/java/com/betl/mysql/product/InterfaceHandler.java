@@ -1,11 +1,10 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2016Äê1ÔÂ14ÈÕÉÏÎç10:05:47
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.core.product;
+package com.betl.mysql.product;
 
 /**
  * @author Administrator
@@ -48,7 +47,7 @@ package com.betl.mysql.core.product;
 	            "java/lang/Object",
 	            new String[] {Iter});
 	        
-	        //¿Õ¹¹Ôì
+	        //ï¿½Õ¹ï¿½ï¿½ï¿½
 	        MethodVisitor mv = cw.visitMethod(ACC_PUBLIC,
 	            "<init>",
 	            "()V",
@@ -68,7 +67,7 @@ package com.betl.mysql.core.product;
 	        
 	        cw.visitEnd();
 	        /*
-	         * Ğ´ÈëÎÄ¼ş
+	         * Ğ´ï¿½ï¿½ï¿½Ä¼ï¿½
 	         */
 	        byte[] code = cw.toByteArray();
 	        FileOutputStream fos = new FileOutputStream(className);
@@ -76,7 +75,7 @@ package com.betl.mysql.core.product;
 	        fos.close();
 	        
 	        /*
-	         * ´ÓÎÄ¼ş¼ÓÔØÀà
+	         * ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	         */
 	        InterfaceHandler loader = new InterfaceHandler();
 	        Class exampleClass = loader.defineClass(className,
@@ -85,7 +84,7 @@ package com.betl.mysql.core.product;
 	            code.length);
 	        
 	        /*
-	         * ·´ÉäÉú³ÉÊµÀı
+	         * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	         */
 	        Object obj = exampleClass.getConstructor(null).newInstance(null);
 	        
@@ -107,7 +106,7 @@ package com.betl.mysql.core.product;
 	            "java/lang/System",
 	            "out",
 	            "Ljava/io/PrintStream;");
-	        mv.visitLdcInsn("µ÷ÓÃ·½·¨ [" + MethodName + "]");
+	        mv.visitLdcInsn("ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ [" + MethodName + "]");
 	        mv.visitMethodInsn(INVOKEVIRTUAL,
 	            "java/io/PrintStream",
 	            "println",

@@ -1,13 +1,11 @@
 /**
- * @Email:zhanghelin@geotmt.com
- * @Author:Zhl
- * @Date:2016Äê1ÔÂ13ÈÕÏÂÎç4:52:38
- * @Desc:
- * @Copyright (c) 2014, ±±¾©¼¯°Â¾ÛºÏ¿Æ¼¼ÓĞÏŞ¹«Ë¾ All Rights Reserved.
+ * @Email:1768880751@qq.com
+ * @Author:zhl
+ * @Date:2016å¹´1æœˆ22æ—¥ä¸‹åˆ5:21:03
+ * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.core.conf;
+package com.betl.mysql.conf;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
@@ -17,7 +15,6 @@ import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-import com.betl.mysql.core.product.BeanTest;
 import com.betl.option.ConfOption;
 
 public class AsmAop extends ClassLoader implements Opcodes {
@@ -125,7 +122,7 @@ public class AsmAop extends ClassLoader implements Opcodes {
 		ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 		cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER, "Table", null, "java/lang/Object", new String[] { "org/apache/hadoop/io/Writable", "org/apache/hadoop/mapred/lib/db/DBWritable" });
 
-		// ¿Õ¹¹Ôì
+
 		MethodVisitor mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
 		mv.visitVarInsn(ALOAD, 0);
 		mv.visitMethodInsn(INVOKEINTERFACE, "java/lang/Object", "<init>", "()V");
@@ -136,18 +133,18 @@ public class AsmAop extends ClassLoader implements Opcodes {
 		Configuration conf = ConfOption.getConf(args);
 		String mysqlCols = conf.get("mysql.table.columns");
 
-		//´´½¨µÄÀàÃû×Ö
+
 		String clazzName="com/betl/mysql/core/model/Table";
 		
 		
-		// ¸øÕâ¸öÀàÌí¼ÓÒ»Ğ©field
+		
 		Map<String, String> nameType = AsmHelp.colNameAndType(mysqlCols);
 		for (String key : nameType.keySet()) {
 			FieldVisitor fv = cw.visitField(ACC_PUBLIC, key, AsmHelp.packageWarpType(nameType.get(key)), null, null);
 			fv.visitEnd();
-			// ÉèÖÃset·½·¨
+		
 			makeSetMethod(cw, clazzName, key, nameType.get(key));
-			// ÉèÖÃget·½·¨
+			// ï¿½ï¿½ï¿½ï¿½getï¿½ï¿½ï¿½ï¿½
 			makeGetMethod(cw, clazzName, key, nameType.get(key));
 		}
 

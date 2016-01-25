@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
+	<property>
+		<name>mapreduce.job.name</name>
+		<value>MysqlToHdfs</value>
+	</property>
+
+
+
+
 
 	<property>
 		<name>mysql.table.name</name>
@@ -10,6 +18,12 @@
 		<name>mysql.table.columns</name>
 		<value>url@STRING,title@STRING,content@STRING</value>
 	</property>
+
+	<property>
+		<name>mysql.table.orderBy</name>
+		<value>id</value>
+	</property>
+
 
 	<property>
 		<name>load.to.hive</name>

@@ -17,9 +17,11 @@ import org.apache.hadoop.mapred.lib.db.DBInputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+import com.betl.common.Constants;
 import com.betl.mysql.mr.mapper.NewsDocMapper;
 import com.betl.mysql.mr.model.NewsDoc;
 import com.betl.mysql.mr.reducer.NewsDocReducer;
+import com.betl.option.ConfOption;
 
 public class MysqlToHdfs {
 
@@ -27,22 +29,28 @@ public class MysqlToHdfs {
 		System.setProperty("hadoop.home.dir", "D:\\work_soft\\hadoop-common-2.2.0-bin-master");
 		System.setProperty("HADOOP_USER_NAME", "hdfs");
 
-		Configuration conf = new Configuration();
+		Configuration conf = ConfOption.getConf(args);
+		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
 
-		DBConfiguration.configureDB(conf, "com.mysql.jdbc.Driver", "jdbc:mysql://10.111.32.203:3306/spiderdb?characterEncoding=UTF-8", "spiderdb", "spiderdb");
-		String[] fields = { "url", "title", "content" };
+		String fieldStr = conf.get("hive.table.columns");
+		String[] colAndTypes = fieldStr.split(Constants.SQL_COLUMN_SPLIT_BY);
+		String[] fields = new String[colAndTypes.length];
+		for (int i = 0; i < colAndTypes.length; i++) {
+			fields[i] = colAndTypes[i].substring(0, colAndTypes[i].indexOf(Constants.SQL_Type_SPLIT_BY));
+		}
 
-		Job job = Job.getInstance(conf, "MysqlToHdfs");
+		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
 		job.setJarByClass(MysqlToHdfs.class);
 
-		DBInputFormat.setInput(job, NewsDoc.class, "sinanews", null, "id", fields);
+		DBInputFormat.setInput(job, NewsDoc.class, conf.get("mysql.table.name"), null, conf.get("mysql.table.orderBy"), fields);
 
 		job.setMapOutputKeyClass(LongWritable.class);
 		job.setMapOutputValueClass(Text.class);
 
 		job.setInputFormatClass(DBInputFormat.class);
 
-		FileOutputFormat.setOutputPath(job, new Path("hdfs://10.111.32.202:8020/mysql/raw/sinanews"));
+		String outputPath = conf.get("hdfs.uri.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("hdfs.path.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.jdbc.schema") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.table.name");
+		FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
 		job.setMapperClass(NewsDocMapper.class);
 		job.setReducerClass(NewsDocReducer.class);
