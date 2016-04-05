@@ -4,9 +4,9 @@
  * @Date:2016年1月22日下午5:21:03
  * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.bolt;
+package com.betl.storm.bolt;
 
-import com.getl.gstorm.common.CommonUtil;
+import com.betl.storm.common.CommonUtil;
 
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;

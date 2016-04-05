@@ -4,7 +4,7 @@
  * @Date:2016年1月22日下午5:21:03
  * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.topology;
+package com.betl.storm.topology;
 
 import org.apache.storm.hdfs.bolt.HdfsBolt;
 import org.apache.storm.hdfs.bolt.format.DefaultFileNameFormat;
@@ -32,8 +32,8 @@ import backtype.storm.spout.SchemeAsMultiScheme;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
 
-import com.getl.gstorm.bolt.MsgScheme;
-import com.getl.gstorm.bolt.MsgSplitBolt;
+import com.betl.storm.bolt.MsgScheme;
+import com.betl.storm.bolt.MsgSplitBolt;
 
 public class NewsTopolgy {
 

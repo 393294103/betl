@@ -18,8 +18,7 @@ public final class ElasticFactory {
 	 static Client client=null;
 	
 	public static  Client getClient(){
-		// ����client.transport.sniffΪtrue��ʹ�ͻ���ȥ��̽������Ⱥ��״̬���Ѽ�Ⱥ������������ip��ַ�ӵ��ͻ����У�
-        // �������ĺô���һ���㲻���ֶ����ü�Ⱥ�����м�Ⱥ��ip�����ӿͻ��ˣ������Զ�������ӣ������Զ������¼��뼯Ⱥ�Ļ�����
+	
 		Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name","escloud").put("client.transport.sniff", true).build();
          client = new TransportClient(settings)
         .addTransportAddress(new InetSocketTransportAddress("10.111.32.90", 9300))

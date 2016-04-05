@@ -4,7 +4,7 @@
  * @Date:2016年1月22日下午5:21:03
  * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.bolt;
+package com.betl.storm.bolt;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;

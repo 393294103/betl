@@ -4,7 +4,7 @@
  * @Date:2016年1月22日下午5:21:03
  * @Copyright ZHL All Rights Reserved.
  */
-package com.getl.gstorm.common;
+package com.betl.storm.common;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
