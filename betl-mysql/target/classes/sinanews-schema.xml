@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>mapreduce.job.name</name>
+		<value>MysqlToHdfs</value>
+	</property>
+
+
+
+
+
+	<property>
+		<name>mysql.table.name</name>
+		<value>sinanews</value>
+	</property>
+	<property>
+		<name>mysql.table.columns</name>
+		<value>url@STRING,title@STRING,content@STRING</value>
+	</property>
+
+	<property>
+		<name>mysql.table.orderBy</name>
+		<value>id</value>
+	</property>
+
+
+	<property>
+		<name>load.to.hive</name>
+		<value>true</value>
+	</property>
+
+	<property>
+		<name>hive.table.name</name>
+		<value>sinanews</value>
+	</property>
+	<property>
+		<name>hive.table.columns</name>
+		<value>url@STRING,title@STRING,content@STRING</value>
+	</property>
+	<property>
+		<name>mapreduce.job.queuename</name>
+		<value>default</value>
+	</property>
+</configuration>

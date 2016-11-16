@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<!-- hive config start: hive.jdbc.driver.class=org.apache.hive.jdbc.HiveDriver 
+		hive.jdbc.url=jdbc:hive2://10.111.32.202:10000/default hive.jdbc.warehouse=zhl 
+		hive.jdbc.username=hdfs hive.jdbc.password=hdfs -->
+	<property>
+		<name>hive.jdbc.driver.class</name>
+		<value>org.apache.hive.jdbc.HiveDriver</value>
+	</property>
+	<property>
+		<name>hive.jdbc.url</name>
+		<value>jdbc:hive2://10.111.32.202:10000/default</value>
+	</property>
+	<property>
+		<name>hive.jdbc.warehouse</name>
+		<value>zhl</value>
+	</property>
+	<property>
+		<name>hive.jdbc.username</name>
+		<value>hdfs</value>
+	</property>
+	<property>
+		<name>hive.jdbc.password</name>
+		<value>hdfs</value>
+	</property>
+	<!-- hive config end -->
+	<!-- hadoop config start: mapred.job.queue.name=hdfs fs.defaultFS=hdfs://geocloudcluster:8020 
+		fs.fsPath=/kafka/raw -->
+	<property>
+		<name>mapreduce.job.queuename</name>
+		<value>default</value>
+	</property>
+	<property>
+		<name>hdfs.uri.default</name>
+		<value>hdfs://10.111.32.202:8020</value>
+	</property>
+	<property>
+		<name>hdfs.path.default</name>
+		<value>/mysql/raw</value>
+	</property>
+	<!-- mysql config start: mysql.jdbc.driver.class=com.mysql.jdbc.Driver mysql.jdbc.url=jdbc:mysql://10.111.32.203:3306/spiderdb?characterEncoding=UTF-8 
+		mysql.data.warehouse=zhl mysql.jdbc.username=hdfs mysql.jdbc.password=hdfs -->
+	<property>
+		<name>mysql.jdbc.driver.class</name>
+		<value>com.mysql.jdbc.Driver</value>
+	</property>
+	<property>
+		<name>mysql.jdbc.url</name>
+		<value>jdbc:mysql://10.111.32.203:3306/spiderdb?characterEncoding=UTF-8</value>
+	</property>
+	<property>
+		<name>mysql.jdbc.schema</name>
+		<value>spiderdb</value>
+	</property>
+	<property>
+		<name>mysql.jdbc.username</name>
+		<value>spiderdb</value>
+	</property>
+	<property>
+		<name>mysql.jdbc.password</name>
+		<value>spiderdb</value>
+	</property>
+
+
+</configuration>
