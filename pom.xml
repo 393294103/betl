@@ -6,8 +6,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 
+<!-- <dependencyManagement> -->
 	<dependencies>
 
 		<dependency>
@@ -19,17 +23,39 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-framework</artifactId>
 			<version>2.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
 			<exclusions>
 				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
 				</exclusion>
 				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
@@ -41,17 +67,24 @@
 			<artifactId>hadoop-client</artifactId>
 			<version>2.4.0</version>
 		</dependency>
+		
+		
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-hdfs</artifactId>
 			<version>2.4.0</version>
 		</dependency>
 
+
+
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.4</version>
 		</dependency>
+		
+		
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -59,7 +92,7 @@
 		</dependency>
 
 	</dependencies>
-
+<!-- <dependencyManagement> -->
 
 
 	<modules>
@@ -68,5 +101,10 @@
 		<module>betl-elastic</module>
 		<module>betl-storm</module>
 		<module>betl-hbase</module>
+		<module>betl-hive</module>
+		<module>betl-config</module>
+		<module>betl-spark</module>
+		<module>betl-kafka</module>
+		<module>betl-zookeeper</module>
 	</modules>
 </project>
