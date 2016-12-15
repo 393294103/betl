@@ -17,11 +17,10 @@ import org.apache.hadoop.mapred.lib.db.DBInputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.betl.common.Constants;
+import com.betl.config.option.BetlConfiguration;
 import com.betl.mysql.mr.mapper.NewsDocMapper;
 import com.betl.mysql.mr.model.NewsDoc;
 import com.betl.mysql.mr.reducer.NewsDocReducer;
-import com.betl.option.ConfOption;
 
 public class MysqlToHdfs {
 
@@ -29,7 +28,13 @@ public class MysqlToHdfs {
 		System.setProperty("hadoop.home.dir", "D:\\work_soft\\hadoop-common-2.2.0-bin-master");
 		System.setProperty("HADOOP_USER_NAME", "hdfs");
 
-		Configuration conf = ConfOption.getConf(args);
+		
+		BetlConfiguration bconf=new BetlConfiguration();
+		Configuration conf = bconf.getConfiguration(args);
+		
+		
+		
+		
 		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
 
 		String fieldStr = conf.get("hive.table.columns");
