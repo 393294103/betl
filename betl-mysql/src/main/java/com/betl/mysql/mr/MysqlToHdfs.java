@@ -36,22 +36,18 @@ public class MysqlToHdfs {
 		BetlConfiguration bconf = new BetlConfiguration();
 		Configuration conf = bconf.getConfiguration(args);
 		logger.debug("[main-conf]\t{}", conf);
-
 		ConfigHelper cf = new ConfigHelper(conf);
-
-		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
-
 		MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode(cf);
-		String code = mysqlModelImplCode.gengerate(conf);
-
+		String code = mysqlModelImplCode.gengerate();
 		String modelClassPath = mysqlModelImplCode.compile(code);
 		@SuppressWarnings("rawtypes")
 		Class clazz=mysqlModelImplCode.loadClass(modelClassPath);
-
 		if (clazz == null) {
 			System.exit(1);
 		}
 
+		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
+		
 		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
 		job.setJarByClass(MysqlToHdfs.class);
 		job.setMapperClass(MysqlToHdfsMapper.class);

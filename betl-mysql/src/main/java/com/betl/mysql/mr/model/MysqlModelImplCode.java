@@ -40,7 +40,8 @@ public class MysqlModelImplCode {
 		this.cf=cf;
 	}
 
-	public String gengerate(Configuration conf) {
+	public String gengerate() {
+		Configuration conf=cf.getConf();
 		String fieldStr = conf.get("mysql.table.columns");
 		logger.debug("[main-fieldStr]\t{}", fieldStr);
 		String[] cols =cf.mysqlColumns();
@@ -143,7 +144,7 @@ public class MysqlModelImplCode {
 		code.append("StringBuilder res=new StringBuilder();" + newLine);
 		code.append("res");
 		for (String col : cols) {
-			code.append(".append(this."+col+").append(\"\\t\")" + newLine);
+			code.append(".append(this."+col+").append(\""+conf.get("hdfs.columns.split")+"\")" + newLine);
 		}
 		code.append(";" + newLine);
 		code.append("return res.toString();");
