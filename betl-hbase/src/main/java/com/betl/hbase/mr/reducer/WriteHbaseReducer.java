@@ -18,6 +18,9 @@ import org.apache.hadoop.io.Text;
  *
  */
 public class WriteHbaseReducer extends TableReducer<Text, Text, ImmutableBytesWritable> {
+	
+	
+	
 	@SuppressWarnings("deprecation")
 	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 		String rowKey = key.toString();

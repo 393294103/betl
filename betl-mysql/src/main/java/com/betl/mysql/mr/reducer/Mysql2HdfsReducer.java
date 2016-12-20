@@ -12,25 +12,25 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
-import com.betl.mysql.mr.model.NewsDoc;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Administrator
  *
  */
-public class NewsDocReducer extends Reducer<LongWritable, Text, NewsDoc, NullWritable> {
+public class Mysql2HdfsReducer extends Reducer<LongWritable, Text, Text, NullWritable> {
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	
 	@Override
 	public void reduce(LongWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-
-		NewsDoc newsDoc = new NewsDoc();
-
+		
 		for (Text val : values) {
-			String[] splits = val.toString().split("\t");
-			newsDoc.setUrl(splits[0]);
-			newsDoc.setTitle(splits[1]);
-			newsDoc.setContent(splits[2]);
+			logger.debug("[reduce-val]\t{}",val.toString());
+			context.write(val, NullWritable.get());
 		}
-		context.write(newsDoc, NullWritable.get());
+		
 	}
 }

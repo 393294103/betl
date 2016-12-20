@@ -7,35 +7,36 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>betl-hbase</artifactId>
+
+	<properties>
+		<hbase.version>1.0.0</hbase.version>
+	</properties>
+
+
 	<dependencies>
 
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop2-compat</artifactId>
-			<version>1.0.0</version>
+			<version>${hbase.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-common</artifactId>
-			<version>1.0.0</version>
+			<version>${hbase.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
-			<version>1.0.0</version>
+			<version>${hbase.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-server</artifactId>
-			<version>1.0.0</version>
+			<version>${hbase.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>2.4.0</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>jdk.tools</groupId>
 			<artifactId>jdk.tools</artifactId>
@@ -43,7 +44,6 @@
 			<scope>system</scope>
 			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 		</dependency>
-
 
 	</dependencies>
 </project>

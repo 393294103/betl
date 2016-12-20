@@ -20,7 +20,6 @@ public class PropsConfigruation implements ICompentConfiguration {
 
 	private Properties props = new Properties();
 
-	@Override
 	public Configuration getConfiguration() throws IOException {
 		
 		Configuration conf =new Configuration();

@@ -18,7 +18,6 @@ import org.apache.hadoop.conf.Configuration;
 public class XmlConfigruation  implements ICompentConfiguration{
 	private String path=null;
 	
-	@Override
 	public Configuration getConfiguration() throws IOException {
 		
 		Configuration conf =new Configuration();
