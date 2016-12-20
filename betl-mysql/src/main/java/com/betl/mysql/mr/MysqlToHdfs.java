@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.betl.config.option.BetlConfiguration;
+import com.betl.mysql.conf.ConfigHelper;
 import com.betl.mysql.mr.mapper.MysqlToHdfsMapper;
 import com.betl.mysql.mr.model.MysqlModelImplCode;
 import com.betl.mysql.mr.reducer.MysqlToHdfsReducer;
@@ -35,40 +36,33 @@ public class MysqlToHdfs {
 		BetlConfiguration bconf = new BetlConfiguration();
 		Configuration conf = bconf.getConfiguration(args);
 		logger.debug("[main-conf]\t{}", conf);
+
+		ConfigHelper cf = new ConfigHelper(conf);
+
 		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
 
-		MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode();
+		MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode(cf);
 		String code = mysqlModelImplCode.gengerate(conf);
-		
+
+		String modelClassPath = mysqlModelImplCode.compile(code);
 		@SuppressWarnings("rawtypes")
-		Class clazz = mysqlModelImplCode.compile(code);
+		Class clazz=mysqlModelImplCode.loadClass(modelClassPath);
 
 		if (clazz == null) {
 			System.exit(1);
 		}
 
-		String fieldStr1 = conf.get("mysql.table.columns");
-		String[] colAndTypes1 = fieldStr1.split(Constants.SQL_COLUMN_SPLIT_BY);
-		String[] fields = new String[colAndTypes1.length];
-		for (int i1 = 0; i1 < colAndTypes1.length; i1++) {
-			fields[i1] = colAndTypes1[i1].substring(0, colAndTypes1[i1].indexOf(Constants.SQL_Type_SPLIT_BY));
-		}
-
 		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
 		job.setJarByClass(MysqlToHdfs.class);
-
-		DBInputFormat.setInput(job, clazz, conf.get("mysql.table.name"), null, conf.get("mysql.table.orderBy"), fields);
-		job.setMapOutputKeyClass(LongWritable.class);
-		job.setMapOutputValueClass(Text.class);
-
-		job.setInputFormatClass(DBInputFormat.class);
-
-		String outputPath = conf.get("hdfs.uri.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("hdfs.path.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.jdbc.schema") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.table.name");
-		FileOutputFormat.setOutputPath(job, new Path(outputPath));
-
 		job.setMapperClass(MysqlToHdfsMapper.class);
 		job.setReducerClass(MysqlToHdfsReducer.class);
 
+		String[] fields = cf.mysqlColumns();
+		DBInputFormat.setInput(job, clazz, conf.get("mysql.table.name"), null, conf.get("mysql.table.orderBy"), fields);
+		job.setInputFormatClass(DBInputFormat.class);
+		job.setMapOutputKeyClass(LongWritable.class);
+		job.setMapOutputValueClass(Text.class);
+		FileOutputFormat.setOutputPath(job, new Path(cf.hdfsOutputPath()));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 
 	}
