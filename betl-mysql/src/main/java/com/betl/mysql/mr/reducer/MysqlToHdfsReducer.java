@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * @author Administrator
  *
  */
-public class Mysql2HdfsReducer extends Reducer<LongWritable, Text, Text, NullWritable> {
+public class MysqlToHdfsReducer extends Reducer<LongWritable, Text, Text, NullWritable> {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	

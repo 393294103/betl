@@ -18,3 +18,11 @@
 [ INFO :2016-12-15 14:51:03],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}
 [ INFO :2016-12-15 14:51:03],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载properties文件/log4j.properties
 [ INFO :2016-12-15 14:51:03],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载properties文件/log4j.properties
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载properties文件/log4j.properties
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载properties文件/log4j.properties
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载properties文件/log4j.properties
+[ INFO :2016-12-20 16:05:13],[com.betl.config.option.BetlConfiguration] - [getConfiguration]加载输入参数-D{abc=abc}

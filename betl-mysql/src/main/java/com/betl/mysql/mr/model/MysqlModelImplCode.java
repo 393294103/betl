@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.betl.mysql.mr.Constants;
-import com.betl.mysql.mr.Mysql2Hdfs;
+import com.betl.mysql.mr.MysqlToHdfs;
 import com.betl.mysql.util.JavaStringObject;
 
 /**
@@ -151,7 +151,7 @@ public class MysqlModelImplCode {
 		for (String str : colAndTypes) {
 			String[] ct = str.split(Constants.SQL_Type_SPLIT_BY);
 			if (ct[1].toLowerCase().equals("string")) {
-				code.append(".append(this.title).append(\"\\t\")" + newLine);
+				code.append(".append(this."+ct[0]+").append(\"\\t\")" + newLine);
 			}
 		}
 		code.append(";" + newLine);
@@ -180,7 +180,7 @@ public class MysqlModelImplCode {
 	    JavaFileObject fileObject = new JavaStringObject("NewsDoc", writer.toString());
 	   
 		
-	    String modelClassPath=Mysql2Hdfs.class.getResource("/").getPath();
+	    String modelClassPath=MysqlToHdfs.class.getResource("/").getPath();
 	    
 	    logger.debug("[compile-modelClassPath]\t{}",modelClassPath);
 	    

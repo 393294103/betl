@@ -18,7 +18,7 @@ import com.betl.mysql.mr.model.IMysqlModel;
 
 
 
-public class Mysql2HdfsMapper extends Mapper<LongWritable, IMysqlModel, LongWritable, Text> {
+public class MysqlToHdfsMapper extends Mapper<LongWritable, IMysqlModel, LongWritable, Text> {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	

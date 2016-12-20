@@ -20,12 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.betl.config.option.BetlConfiguration;
-import com.betl.mysql.mr.mapper.Mysql2HdfsMapper;
+import com.betl.mysql.mr.mapper.MysqlToHdfsMapper;
 import com.betl.mysql.mr.model.MysqlModelImplCode;
-import com.betl.mysql.mr.reducer.Mysql2HdfsReducer;
+import com.betl.mysql.mr.reducer.MysqlToHdfsReducer;
 
-public class Mysql2Hdfs {
-	private static Logger logger = LoggerFactory.getLogger(Mysql2Hdfs.class);
+public class MysqlToHdfs {
+	private static Logger logger = LoggerFactory.getLogger(MysqlToHdfs.class);
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
@@ -55,7 +55,7 @@ public class Mysql2Hdfs {
 		}
 
 		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
-		job.setJarByClass(Mysql2Hdfs.class);
+		job.setJarByClass(MysqlToHdfs.class);
 
 		DBInputFormat.setInput(job, clazz, conf.get("mysql.table.name"), null, conf.get("mysql.table.orderBy"), fields);
 		job.setMapOutputKeyClass(LongWritable.class);
@@ -66,8 +66,8 @@ public class Mysql2Hdfs {
 		String outputPath = conf.get("hdfs.uri.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("hdfs.path.default") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.jdbc.schema") + Constants.PATH_SEPARATOR_DEFAULT + conf.get("mysql.table.name");
 		FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
-		job.setMapperClass(Mysql2HdfsMapper.class);
-		job.setReducerClass(Mysql2HdfsReducer.class);
+		job.setMapperClass(MysqlToHdfsMapper.class);
+		job.setReducerClass(MysqlToHdfsReducer.class);
 
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 
