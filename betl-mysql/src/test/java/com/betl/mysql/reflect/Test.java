@@ -18,7 +18,7 @@ public class Test {
 		// TODO Auto-generated method stub
 		return name;
 	}
-	private String name;
+	public String name;
 
 
 	public static void main(String[] args) {
