@@ -41,7 +41,7 @@ public class MysqlToHdfs {
 		String code = mysqlModelImplCode.gengerate();
 		String modelClassPath = mysqlModelImplCode.compile(code);
 		@SuppressWarnings("rawtypes")
-		Class clazz=mysqlModelImplCode.loadClass(modelClassPath);
+		Class clazz=mysqlModelImplCode.gengerateClass(modelClassPath);
 		if (clazz == null) {
 			System.exit(1);
 		}

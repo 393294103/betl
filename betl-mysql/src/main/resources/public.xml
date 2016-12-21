@@ -39,7 +39,7 @@
 		<name>mysql.jdbc.driver.class</name>
 		<value>com.mysql.jdbc.Driver</value>
 	</property>
-	<!-- <property>
+<property>
 		<name>mysql.jdbc.url</name>
 		<value>jdbc:mysql://localhost:3306/spiderdb?characterEncoding=UTF-8</value>
 	</property>
@@ -54,8 +54,8 @@
 	<property>
 		<name>mysql.jdbc.password</name>
 		<value>root</value>
-	</property> -->
-<property>
+	</property>
+	<!-- <property>
 		<name>mysql.jdbc.url</name>
 		<value>jdbc:mysql://121.42.181.229:3306/spiderdb?characterEncoding=UTF-8</value>
 	</property>
@@ -71,5 +71,5 @@
 		<name>mysql.jdbc.password</name>
 		<value>spiderdb@5237</value>
 	</property>
-
+ -->
 </configuration>

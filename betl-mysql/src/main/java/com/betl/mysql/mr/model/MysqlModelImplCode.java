@@ -79,10 +79,39 @@ public class MysqlModelImplCode {
 		 * private String content;
 		 */
 		for (String col : cols) {
-			code.append("private String "+col+ ";" + newLine);
+			code.append("public String "+col+ ";" + newLine);
 		}
 
-
+		/**
+		 * public IMysqlModelImpl(){}
+		 */
+		//code.append("public IMysqlModelImpl(){}"+newLine);
+		
+		/**
+		public NewsDoc(String url,String title,String content){
+		this.url=url;
+		this.title=title;
+		this.content=content;
+		} 
+		*/
+		/*int j=0;
+		code.append("public IMysqlModelImpl(");
+		for (String col : cols) {
+			
+			if(j<cols.length-1){
+				code.append("String "+col+ ",");
+			}else{
+				code.append("String "+col+"){"+newLine);
+			}
+			j++;
+		}
+		
+		for (String col : cols) {
+			code.append("this."+col+"="+col+";"+newLine);
+		}
+		code.append("}"+newLine);
+		*/
+		
 		/**
 		 * public void write(PreparedStatement statement) throws SQLException {
 		 * statement.setString(1, this.url); 
@@ -154,7 +183,7 @@ public class MysqlModelImplCode {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public Class loadClass(String modelClassPath) throws ClassNotFoundException, MalformedURLException{
+	public Class gengerateClass(String modelClassPath) throws ClassNotFoundException, MalformedURLException{
 		Class clazz =null;
 		//编译成功，并获取实现类
     	URL[] urls=new URL[]{new URL("file:/"+modelClassPath)}; 
