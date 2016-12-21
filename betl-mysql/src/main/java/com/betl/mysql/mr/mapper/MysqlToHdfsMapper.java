@@ -14,12 +14,12 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.mysql.mr.model.IMysqlModel;
+import com.betl.mysql.mr.model.IModelRecord;
 
-public class MysqlToHdfsMapper extends Mapper<LongWritable, IMysqlModel, LongWritable, Text> {
+public class MysqlToHdfsMapper extends Mapper<LongWritable, IModelRecord, LongWritable, Text> {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	public void map(LongWritable key, IMysqlModel value, Context context) throws IOException, InterruptedException {
+	public void map(LongWritable key, IModelRecord value, Context context) throws IOException, InterruptedException {
 		logger.debug("[map-val]\t{}", value.formatHdfsStr());
 		context.write(key, new Text(value.formatHdfsStr()));
 	}

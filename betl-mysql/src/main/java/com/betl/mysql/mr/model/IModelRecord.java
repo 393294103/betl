@@ -13,7 +13,7 @@ import org.apache.hadoop.mapred.lib.db.DBWritable;
  * @author zhl
  *
  */
-public interface IMysqlModel extends Writable, DBWritable {
+public interface IModelRecord extends Writable, DBWritable {
 
 	public String formatHdfsStr();
 

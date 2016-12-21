@@ -17,30 +17,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.betl.mysql.conf.ConfigHelper;
-import com.betl.mysql.mr.model.IMysqlModel;
-import com.betl.mysql.mr.model.MysqlModelImplCode;
+import com.betl.mysql.mr.model.IModelRecord;
+import com.betl.mysql.mr.model.ModelRecordImplCode;
 
 /**
  * @author zhl
  *
  */
-public class HdfsToMysqlReducer extends Reducer<LongWritable, Text, IMysqlModel, NullWritable> {
+public class HdfsToMysqlReducer extends Reducer<LongWritable, Text, IModelRecord, NullWritable> {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	@SuppressWarnings("rawtypes")
 	private Class clazz;
 	private ConfigHelper cf;
 
 	@Override
-	protected void setup(Reducer<LongWritable, Text, IMysqlModel, NullWritable>.Context context) throws IOException, InterruptedException {
+	protected void setup(Reducer<LongWritable, Text, IModelRecord, NullWritable>.Context context) throws IOException, InterruptedException {
 		super.setup(context);
 		try {
 			ConfigHelper cf = new ConfigHelper(context.getConfiguration());
 			this.cf = cf;
-			MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode(cf);
-			String code = mysqlModelImplCode.gengerate();
-			String modelClassPath = mysqlModelImplCode.compile(code);
-			clazz = mysqlModelImplCode.gengerateClass(modelClassPath);
+			ModelRecordImplCode modelRecordImplCode = new ModelRecordImplCode(cf);
+			String code = modelRecordImplCode.gengerate();
+			String modelClassPath = modelRecordImplCode.compile(code);
+			clazz = modelRecordImplCode.gengerateClass(modelClassPath);
 		} catch (ClassNotFoundException e) {
+			logger.error("[setup-Exception]{}", e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +56,6 @@ public class HdfsToMysqlReducer extends Reducer<LongWritable, Text, IMysqlModel,
 			Class c = clazz;
 			Field field;
 			try {
-
 				String[] mysqlFields = cf.mysqlColumns();
 				int i = 0;
 				Object obj = c.newInstance();// 实例化对象
@@ -65,9 +65,10 @@ public class HdfsToMysqlReducer extends Reducer<LongWritable, Text, IMysqlModel,
 					i++;
 				}
 
-				context.write((IMysqlModel) obj, NullWritable.get());
+				context.write((IModelRecord) obj, NullWritable.get());
 
 			} catch (NoSuchFieldException | SecurityException | InstantiationException | IllegalAccessException e) {
+				logger.error("[reduce-Exception]{}", e.getMessage());
 				e.printStackTrace();
 			}
 

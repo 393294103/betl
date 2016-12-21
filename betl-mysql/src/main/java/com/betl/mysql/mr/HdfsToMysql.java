@@ -22,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import com.betl.config.option.BetlConfiguration;
 import com.betl.mysql.conf.ConfigHelper;
 import com.betl.mysql.mr.mapper.HdfsToMysqlMapper;
-import com.betl.mysql.mr.model.MysqlModelImplCode;
 import com.betl.mysql.mr.reducer.HdfsToMysqlReducer;
 
 /**
@@ -40,20 +39,12 @@ public class HdfsToMysql {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		System.setProperty("hadoop.home.dir", "D:\\work_soft\\hadoop-common-2.2.0-bin-master");
 		System.setProperty("HADOOP_USER_NAME", "hdfs");
-
 		BetlConfiguration bconf = new BetlConfiguration();
 		Configuration conf = bconf.getConfiguration(args);
 		logger.debug("[main-conf]\t{}", conf);
+		
 		ConfigHelper cf = new ConfigHelper(conf);
 		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
-		
-		
-		
-		MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode(cf);
-		String code = mysqlModelImplCode.gengerate();
-		System.out.println(code);
-		
-		
 		
 		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
 		job.setJarByClass(HdfsToMysql.class);
@@ -64,8 +55,6 @@ public class HdfsToMysql {
 		
 		String[] fields=cf.mysqlColumns();
 		DBOutputFormat.setOutput(job, conf.get("mysql.table.name"), fields);
-		
-		
 		job.setMapOutputKeyClass(LongWritable.class);
 		job.setMapOutputValueClass(Text.class);
 		

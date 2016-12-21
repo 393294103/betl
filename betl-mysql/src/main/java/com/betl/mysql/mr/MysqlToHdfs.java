@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import com.betl.config.option.BetlConfiguration;
 import com.betl.mysql.conf.ConfigHelper;
 import com.betl.mysql.mr.mapper.MysqlToHdfsMapper;
-import com.betl.mysql.mr.model.MysqlModelImplCode;
+import com.betl.mysql.mr.model.ModelRecordImplCode;
 import com.betl.mysql.mr.reducer.MysqlToHdfsReducer;
 
 public class MysqlToHdfs {
@@ -37,11 +37,11 @@ public class MysqlToHdfs {
 		Configuration conf = bconf.getConfiguration(args);
 		logger.debug("[main-conf]\t{}", conf);
 		ConfigHelper cf = new ConfigHelper(conf);
-		MysqlModelImplCode mysqlModelImplCode = new MysqlModelImplCode(cf);
-		String code = mysqlModelImplCode.gengerate();
-		String modelClassPath = mysqlModelImplCode.compile(code);
+		ModelRecordImplCode modelRecordImplCode = new ModelRecordImplCode(cf);
+		String code = modelRecordImplCode.gengerate();
+		String modelClassPath = modelRecordImplCode.compile(code);
 		@SuppressWarnings("rawtypes")
-		Class clazz=mysqlModelImplCode.gengerateClass(modelClassPath);
+		Class clazz=modelRecordImplCode.gengerateClass(modelClassPath);
 		if (clazz == null) {
 			System.exit(1);
 		}

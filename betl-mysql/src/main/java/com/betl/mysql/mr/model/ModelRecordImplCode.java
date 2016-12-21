@@ -29,14 +29,14 @@ import com.betl.mysql.util.JavaStringObject;
  * @author zhl
  *
  */
-public class MysqlModelImplCode {
+public class ModelRecordImplCode {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private final String newLine = "\n";
 	private URLClassLoader classLoader;
 	
 	private ConfigHelper cf;
 	
-	public MysqlModelImplCode(ConfigHelper cf){
+	public ModelRecordImplCode(ConfigHelper cf){
 		this.cf=cf;
 	}
 
@@ -61,7 +61,7 @@ public class MysqlModelImplCode {
 			import org.apache.hadoop.io.Text;
 			import org.apache.hadoop.io.Writable;
 			import org.apache.hadoop.mapred.lib.db.DBWritable;
-			public class IMysqlModelImpl implements IMysqlModel{
+			public class ModelRecordImpl implements IModelRecord{
 		 */
 		code.append("package com.betl.mysql.mr.model;" + newLine);
 		code.append("import java.io.DataInput;" + newLine);
@@ -71,7 +71,7 @@ public class MysqlModelImplCode {
 		code.append("import java.sql.ResultSet;" + newLine);
 		code.append("import java.sql.SQLException;" + newLine);
 		code.append("import org.apache.hadoop.io.Text;" + newLine);
-		code.append("public class IMysqlModelImpl implements IMysqlModel{" + newLine);
+		code.append("public class ModelRecordImpl implements IModelRecord{" + newLine);
 
 		/**字段信息
 		 * private String url; 
@@ -82,35 +82,7 @@ public class MysqlModelImplCode {
 			code.append("public String "+col+ ";" + newLine);
 		}
 
-		/**
-		 * public IMysqlModelImpl(){}
-		 */
-		//code.append("public IMysqlModelImpl(){}"+newLine);
 		
-		/**
-		public NewsDoc(String url,String title,String content){
-		this.url=url;
-		this.title=title;
-		this.content=content;
-		} 
-		*/
-		/*int j=0;
-		code.append("public IMysqlModelImpl(");
-		for (String col : cols) {
-			
-			if(j<cols.length-1){
-				code.append("String "+col+ ",");
-			}else{
-				code.append("String "+col+"){"+newLine);
-			}
-			j++;
-		}
-		
-		for (String col : cols) {
-			code.append("this."+col+"="+col+";"+newLine);
-		}
-		code.append("}"+newLine);
-		*/
 		
 		/**
 		 * public void write(PreparedStatement statement) throws SQLException {
@@ -188,13 +160,13 @@ public class MysqlModelImplCode {
 		//编译成功，并获取实现类
     	URL[] urls=new URL[]{new URL("file:/"+modelClassPath)}; 
         classLoader = new URLClassLoader(urls); 
-         clazz=classLoader.loadClass("com.betl.mysql.mr.model.IMysqlModelImpl"); 
+         clazz=classLoader.loadClass("com.betl.mysql.mr.model.ModelRecordImpl"); 
         logger.debug("[compile-clazz]\t{}",clazz);
         return clazz;
 	}
 	
 	public String compile(String code) throws ClassNotFoundException, MalformedURLException{
-		logger.debug("[compile-MysqlModelImplCode]\t{}",code);
+		logger.debug("[compile-ModelRecordImplCode]\t{}",code);
 		StringWriter writer = new StringWriter();// 内存字符串输出流 
 	    PrintWriter out = new PrintWriter(writer); 
 	    out.println(code); 
@@ -203,10 +175,10 @@ public class MysqlModelImplCode {
 		
 		// 开始编译 
 	    JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler(); 
-	    JavaFileObject fileObject = new JavaStringObject("IMysqlModelImpl", writer.toString());
+	    JavaFileObject fileObject = new JavaStringObject("ModelRecordImpl", writer.toString());
 	   
 		//获取项目根路径
-	    String modelClassPath=MysqlModelImplCode.class.getResource("/").getPath();
+	    String modelClassPath=ModelRecordImplCode.class.getResource("/").getPath();
 	    logger.debug("[compile-modelClassPath]\t{}",modelClassPath);
 	    
 	    //开始编译到指定的目录下
