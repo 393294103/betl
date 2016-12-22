@@ -68,14 +68,14 @@ public class BetlConfiguration {
 			String xmlPath = cmd.getOptionValue("x");
 			ICompentConfiguration icf = new XmlConfigruation(xmlPath);
 			conf.addResource(icf.getConfiguration());
-			logger.debug("[getConfiguration]加载xml文件{}",xmlPath);
+			logger.debug("[getConfiguration-xml]\t{}",xmlPath);
 		}
 		
 		if (cmd.hasOption("p")) {
 			String propsPath = cmd.getOptionValue("p");
 			ICompentConfiguration icf = new PropsConfigruation(propsPath);
 			conf.addResource(icf.getConfiguration());
-			logger.info("[getConfiguration]加载properties文件{}",propsPath);
+			logger.debug("[getConfiguration-properties]\t{}",propsPath);
 		}
 
 		if (cmd.hasOption("D")) {
@@ -83,7 +83,7 @@ public class BetlConfiguration {
 
 			ICompentConfiguration icf = new PropsConfigruation(props);
 			conf.addResource(icf.getConfiguration());
-			logger.info("[getConfiguration]加载输入参数-D{}",props.toString());
+			logger.info("[getConfiguration--D]\t{}",props.toString());
 		}
 		return conf;
 

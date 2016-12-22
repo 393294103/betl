@@ -22,7 +22,7 @@ public class HdfsToMysqlMapper extends Mapper<LongWritable, Text, LongWritable, 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		logger.debug("[map-val]\t{}", value);
+		//logger.debug("[map-val]\t{}", value);
 		context.write(key, value);
 	}
 

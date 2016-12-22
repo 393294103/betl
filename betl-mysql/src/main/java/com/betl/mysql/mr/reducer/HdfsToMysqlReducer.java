@@ -49,7 +49,7 @@ public class HdfsToMysqlReducer extends Reducer<LongWritable, Text, IModelRecord
 	@Override
 	public void reduce(LongWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 		for (Text val : values) {
-			logger.debug("[reduce-val]\t{}", val);
+			//logger.debug("[reduce-val]\t{}", val);
 			String[] hdfsFields = val.toString().split(context.getConfiguration().get("hdfs.columns.split"));
 
 			@SuppressWarnings("rawtypes")

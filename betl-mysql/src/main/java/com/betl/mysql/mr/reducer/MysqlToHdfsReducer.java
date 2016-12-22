@@ -27,7 +27,7 @@ public class MysqlToHdfsReducer extends Reducer<LongWritable, Text, Text, NullWr
 	public void reduce(LongWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 
 		for (Text val : values) {
-			logger.debug("[reduce-val]\t{}", val.toString());
+			//logger.debug("[reduce-val]\t{}", val.toString());
 			context.write(val, NullWritable.get());
 		}
 

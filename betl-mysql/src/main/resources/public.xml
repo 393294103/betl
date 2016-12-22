@@ -41,7 +41,7 @@
 	</property>
 <property>
 		<name>mysql.jdbc.url</name>
-		<value>jdbc:mysql://localhost:3306/spiderdb?characterEncoding=UTF-8</value>
+		<value>jdbc:mysql://127.0.0.1:3306/spiderdb?characterEncoding=UTF-8</value>
 	</property>
 	<property>
 		<name>mysql.jdbc.schema</name>

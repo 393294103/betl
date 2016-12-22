@@ -20,7 +20,7 @@ public class MysqlToHdfsMapper extends Mapper<LongWritable, IModelRecord, LongWr
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	public void map(LongWritable key, IModelRecord value, Context context) throws IOException, InterruptedException {
-		logger.debug("[map-val]\t{}", value.formatHdfsStr());
+		//logger.debug("[map-val]\t{}", value.formatHdfsStr());
 		context.write(key, new Text(value.formatHdfsStr()));
 	}
 }
