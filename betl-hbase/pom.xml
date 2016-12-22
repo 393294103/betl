@@ -14,7 +14,16 @@
 
 
 	<dependencies>
-
+		<!-- <dependency>
+			<groupId>com.betl</groupId>
+			<artifactId>betl-config</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency> -->
+		<dependency>
+			<groupId>com.betl</groupId>
+			<artifactId>betl-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-hadoop2-compat</artifactId>

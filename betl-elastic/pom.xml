@@ -7,6 +7,11 @@
   </parent>
   <artifactId>betl-elastic</artifactId>
    <dependencies>
+   <dependency>
+			<groupId>com.betl</groupId>
+			<artifactId>betl-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
