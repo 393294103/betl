@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 
 public class HdfsUtil {
 	// 2. 声明一个Logger，这个是static的方式，我比较习惯这么写。
-	private static final Logger logger = LoggerFactory.getLogger(HdfsUtil.class);
+	private  final Logger logger = LoggerFactory.getLogger(getClass());
 
 	public FileSystem hdfs;
 

@@ -30,6 +30,7 @@ public class BetlConfiguration {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	
+	@SuppressWarnings("static-access")
 	private  Options buildOptions() {
 		Options options = new Options();
 		// 外部传入的公共文件
