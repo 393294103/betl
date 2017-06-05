@@ -6,6 +6,7 @@
  */
 package com.betl.config.option;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -42,7 +43,7 @@ public class PropsConfigruation implements ICompentConfiguration {
 	}
 	
 	private void loads() throws IOException {
-		InputStream in = PropsConfigruation.class.getResourceAsStream(path);
+		FileInputStream in = new FileInputStream(path);
 		props.load(in);
 	}
 
