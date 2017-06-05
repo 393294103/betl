@@ -17,11 +17,15 @@ import org.apache.hadoop.mapreduce.Reducer;
  * @author Administrator
  *
  */
-public class CombineSmallFileReducer  extends Reducer<Text, BytesWritable, Text, NullWritable> {
+public class CombineSmallFileReducer extends
+		Reducer<Text, BytesWritable, Text, NullWritable> {
 	@Override
-	public void reduce(Text key, Iterable<BytesWritable> values, Context context) throws IOException, InterruptedException {
+	public void reduce(Text key, Iterable<BytesWritable> values, Context context)
+			throws IOException, InterruptedException {
 		for (BytesWritable val : values) {
-			context.write(new Text(new String(val.getBytes(),0,val.getLength())),NullWritable.get());
-	}
+			context.write(
+					new Text(new String(val.getBytes(), 0, val.getLength())),
+					NullWritable.get());
+		}
 	}
 }

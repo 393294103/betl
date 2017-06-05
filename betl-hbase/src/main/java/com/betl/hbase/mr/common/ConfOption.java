@@ -52,24 +52,7 @@ public class ConfOption {
 		options.addOption(reduces);
 		
 		
-		Option mhost = new Option("mhost", BasicConstants.MYSQL_JDBC_HOST, true,"mysql jdbc host.");
-		mhost.setRequired(false);
-		options.addOption(mhost);
-		
-		
-		
-		Option mschema = new Option("mschema", BasicConstants.MYSQL_JDBC_SCHEMA, true,"mysql jdbc schema.");
-		mhost.setRequired(false);
-		options.addOption(mschema);
-		
-		
-		Option muser = new Option("muser", BasicConstants.MYSQL_JDBC_USERNAME, true,"mysql jdbc username.");
-		muser.setRequired(false);
-		options.addOption(muser);
-		
-		Option mpass = new Option("mpass", BasicConstants.MYSQL_JDBC_PASSWORD, true,"mysql jdbc password.");
-		mpass.setRequired(false);
-		options.addOption(mpass);
+	
 		
 		
 		
@@ -174,89 +157,6 @@ public class ConfOption {
 	
 	
 	
-	public static Configuration getGenHFileControllerJobConf(String[] args){
-		Configuration conf = new Configuration();
-		Options options = buildJobControllerOptions();
-		HelpFormatter formatter = new HelpFormatter();
-		formatter.setWidth(350);
-		CommandLineParser parser = new PosixParser();
-		CommandLine cmd = null;
 
-		try {
-			// 处理Options和参数
-			cmd = parser.parse(options, args);
-			
-			 String hcf=cmd.getOptionValue(BasicConstants.HBASE_COLUMN_FAMILY);
-			 if(StringUtils.isNoneBlank(hcf)){
-			      conf.set(BasicConstants.HBASE_COLUMN_FAMILY, hcf);
-			 }
-			
-			String jobType=cmd.getOptionValue(BasicConstants.MR_JOB_NAME);
-			if(!BasicConstants.MR_JOB_TYPE.enum2Map().containsKey(jobType)){
-			 throw new RuntimeException("job no support "+cmd.getOptionValue(BasicConstants.MR_JOB_NAME));
-			}
-			
-			Integer numReduce=Integer.valueOf(cmd.getOptionValue(BasicConstants.MAPREDUCE_JOB_REDUCES));
-			boolean flag=PreSplitHBaseHelper.checkNum(numReduce);
-			if(!flag){
-				String tips="mapreduce.job.reduces is unavailable,(reduces 大于2,并且是2的n次方,请运行 java -cp gQuery*.jar com.geo.gquery.mr.JobHelpHTabMain)";
-				throw new RuntimeException(tips);
-			}
-			
-			String input =cmd.getOptionValue(BasicConstants.HDFS_INPUT_PATH);
-			String dateStr=getConfDateStr(input);
-			boolean checkDateStr=isValidDate(dateStr);
-			if(!checkDateStr){
-				throw new RuntimeException("input dir getDateStr return false.(eg -input /xxx/20170101).");
-			}else{
-				conf.set(BasicConstants.HDFS_INPUT_DATE, dateStr);
-			}
-			
-			/*boolean useMysql=false;
-			if(BasicConstants.MR_JOB_TYPE.CATE_WEIGHT_JOB.toString().equals(jobType)){
-				useMysql=true;
-			}else if(BasicConstants.MR_JOB_TYPE.TAG_WEIGHT_JOB.toString().equals(jobType)){
-				useMysql=true;
-			}*/
-			
-			/*if(useMysql){
-				String mHost=cmd.getOptionValue(BasicConstants.MYSQL_JDBC_HOST);
-				String mSchema=cmd.getOptionValue(BasicConstants.MYSQL_JDBC_SCHEMA);
-				String mUser=cmd.getOptionValue(BasicConstants.MYSQL_JDBC_USERNAME);
-				String mPass=cmd.getOptionValue(BasicConstants.MYSQL_JDBC_PASSWORD);
-				
-				if(StringUtils.isBlank(mHost)||StringUtils.isBlank(mSchema)||StringUtils.isBlank(mUser)||StringUtils.isBlank(mPass)){
-					throw new RuntimeException("mhost,mschema,muser or mpass is blank!");
-				}else{
-					conf.set(BasicConstants.MYSQL_JDBC_HOST, mHost);
-					conf.set(BasicConstants.MYSQL_JDBC_SCHEMA, mSchema);
-					conf.set(BasicConstants.MYSQL_JDBC_USERNAME, mUser);
-					conf.set(BasicConstants.MYSQL_JDBC_PASSWORD, mPass);
-				}
-			}*/
-			
-		} catch (Exception e) {
-			logger.error("getJobControllerConf-ParseException={}",e.getMessage());
-			formatter.printHelp("args", options); // 如果发生异常，则打印出帮助信息
-			System.exit(0);
-		}
-	    
-	    Properties props=cmd.getOptionProperties("D");
-		 Iterator<Entry<Object, Object>> it = props.entrySet().iterator();  
-	        while(it.hasNext()){
-	            Entry<Object, Object> entry = it.next();  
-	            Object key = entry.getKey();  
-	            Object value = entry.getValue(); 
-	            conf.set(key.toString(), value.toString());
-	    }  
-	  
-		conf.set(BasicConstants.MR_JOB_NAME, cmd.getOptionValue(BasicConstants.MR_JOB_NAME));
-		conf.set(BasicConstants.HDFS_INPUT_PATH, cmd.getOptionValue(BasicConstants.HDFS_INPUT_PATH));
-		conf.set(BasicConstants.HDFS_OUTPUT_PATH, cmd.getOptionValue(BasicConstants.HDFS_OUTPUT_PATH));
-		conf.set(BasicConstants.MAPREDUCE_JOB_REDUCES, cmd.getOptionValue(BasicConstants.MAPREDUCE_JOB_REDUCES));
-		
-		
-		return conf;
-	}
 
 }
