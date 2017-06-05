@@ -18,6 +18,8 @@ import org.apache.hadoop.mapreduce.lib.input.CombineFileSplit;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
 
+import com.betl.common.mr.common.BasicConstants;
+
 /**
  * @author Administrator
  *
@@ -34,7 +36,8 @@ public class CombineSmallFileRecordReader extends RecordReader<LongWritable,Byte
 	//private Text currentValue=new Text();
 	private BytesWritable currentValue=new BytesWritable();
 	
-	public CombineSmallFileRecordReader(CombineFileSplit combineFileSplit,TaskAttemptContext context,Integer index) {
+	public CombineSmallFileRecordReader(CombineFileSplit combineFileSplit,
+			TaskAttemptContext context,Integer index) {
 		super();
 		this.combineFileSplit=combineFileSplit;
 		this.currentIndex=index;
@@ -42,13 +45,18 @@ public class CombineSmallFileRecordReader extends RecordReader<LongWritable,Byte
 	
 	
 	@Override
-	public void initialize(InputSplit split, TaskAttemptContext context) throws IOException, InterruptedException {
+	public void initialize(InputSplit split, TaskAttemptContext context)
+			throws IOException, InterruptedException {
 	this.combineFileSplit=(CombineFileSplit)split;
-	FileSplit fileSplit=new FileSplit(combineFileSplit.getPath(currentIndex),combineFileSplit.getOffset(currentIndex),combineFileSplit.getLength(currentIndex),combineFileSplit.getLocations());
+	FileSplit fileSplit=new FileSplit(combineFileSplit.getPath(currentIndex),
+			combineFileSplit.getOffset(currentIndex),
+			combineFileSplit.getLength(currentIndex),
+			combineFileSplit.getLocations());
 	lineRecordReader.initialize(fileSplit, context);
 	this.paths=combineFileSplit.getPaths();
 	totalLength=paths.length;
-	context.getConfiguration().set("map.input.file.name", combineFileSplit.getPath(currentIndex).getName());
+	context.getConfiguration().set(BasicConstants.MAP_INPUT_FILE_NAME, 
+			combineFileSplit.getPath(currentIndex).getName());
 	}
 
 	

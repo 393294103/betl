@@ -28,7 +28,8 @@ private static StructObjectInspector input;
 
 protected void setup(Context context) throws IOException, InterruptedException {
 	super.setup(context);
-	TypeInfo inTI = TypeInfoUtils.getTypeInfoFromTypeString(context.getConfiguration().get("hive.orc.schema"));
+	String inputSchema=context.getConfiguration().get(BasicConstants.ORC_INPUT_SCHEMA);
+	TypeInfo inTI = TypeInfoUtils.getTypeInfoFromTypeString(context.getConfiguration().get(inputSchema));
 	input = (StructObjectInspector) OrcStruct.createObjectInspector(inTI);
 }
 

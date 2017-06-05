@@ -13,14 +13,15 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-/**
- * @author Administrator
- *
- */
-public class CombineSmallFileMapper extends Mapper<LongWritable,BytesWritable,Text,BytesWritable>{
+import com.betl.common.mr.common.BasicConstants;
+
+public class CombineSmallFileMapper extends
+Mapper<LongWritable,BytesWritable,Text,BytesWritable>{
 private Text file =new Text();
-public void map(LongWritable key, BytesWritable value, Context context) throws IOException, InterruptedException {
-	String fileName=context.getConfiguration().get("map.input.file.name");
+public void map(LongWritable key, BytesWritable value, Context context)
+		throws IOException, InterruptedException {
+	String fileName=context.getConfiguration().
+			get(BasicConstants.MAP_INPUT_FILE_NAME);
 	file.set(fileName);
 	context.write(file, value);
 }

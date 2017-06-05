@@ -14,12 +14,16 @@ public class BasicConstants {
 	
 	public static final String BETL_JOB_NAME = "betl.job.name";
 	
-	public static final String HIVE_ORC_SCHEMA="hive.orc.schema";
+	public static final String ORC_INPUT_SCHEMA="orc.input.schema";
 	
 	public static final String HDFS_URI_DEFAULT = "hdfs.uri.default";
 	public static final String HDFS_INPUT_PATH = "hdfs.input.path";
 	public static final String HDFS_OUTPUT_PATH = "hdfs.output.path";
 	public static final String HDFS_COLUMN_SPLIT = "hdfs.column.split";
+	
+	public static final String MAP_INPUT_FILE_NAME = "map.input.file.name";
+	
+	
 	
 	public static enum MR_JOB_TYPE {
 		ORC2TEXT_JOB("ORC2TEXT_JOB", "ORC2TEXT_JOB"),
