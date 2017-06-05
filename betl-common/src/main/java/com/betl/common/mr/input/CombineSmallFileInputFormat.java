@@ -21,12 +21,17 @@ import org.apache.hadoop.mapreduce.lib.input.CombineFileSplit;
  * @author Administrator
  *
  */
-public class CombineSmallFileInputFormat extends CombineFileInputFormat<LongWritable, BytesWritable> {
+public class CombineSmallFileInputFormat 
+extends CombineFileInputFormat<LongWritable, BytesWritable> {
 
 	 @Override
-	 public RecordReader<LongWritable, BytesWritable> createRecordReader(InputSplit split, TaskAttemptContext context) throws IOException{
+	 public RecordReader<LongWritable, BytesWritable> 
+	 createRecordReader(InputSplit split, TaskAttemptContext context) 
+			 throws IOException{
 		 CombineFileSplit combineFileSplit=(CombineFileSplit)split;
-		 CombineFileRecordReader<LongWritable,BytesWritable> recordReader=new CombineFileRecordReader<LongWritable, BytesWritable>(combineFileSplit, context, CombineSmallFileRecordReader.class);
+		 CombineFileRecordReader<LongWritable,BytesWritable> recordReader
+		 =new CombineFileRecordReader<LongWritable, BytesWritable>
+		 (combineFileSplit, context, CombineSmallFileRecordReader.class);
 		 try {
 			recordReader.initialize(combineFileSplit, context);
 		} catch (InterruptedException e) {
