@@ -4,7 +4,7 @@
  * @Date:2016年1月22日下午5:21:03
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.hbase.mr;
+package com.betl.hbase.mr.job;
 
 import java.io.IOException;
 

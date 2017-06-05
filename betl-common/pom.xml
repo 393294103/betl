@@ -22,9 +22,19 @@
 		<gsonVersion>2.4</gsonVersion>
 		<slf4jApiVersion>1.7.2</slf4jApiVersion>
 		<logbackVersion>1.1.2</logbackVersion>
+		<cglibNodepVersion>2.2</cglibNodepVersion>
 	</properties>
 	
 	<dependencies>
+	
+	
+
+		<dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>${cglibNodepVersion}</version>
+        </dependency>
+	
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -72,6 +82,12 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>${commonLangVersion}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
 		</dependency>
 
 		<dependency>

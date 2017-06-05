@@ -14,7 +14,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.mysql.mr.model.IModelRecord;
+import com.betl.mysql.mr.model.v1.IModelRecord;
 
 public class MysqlToHdfsMapper extends Mapper<LongWritable, IModelRecord, LongWritable, Text> {
 	private Logger logger = LoggerFactory.getLogger(getClass());

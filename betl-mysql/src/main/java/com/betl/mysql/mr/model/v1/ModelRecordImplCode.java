@@ -4,7 +4,7 @@
  * @Date:2016年12月19日下午5:28:28
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.mysql.mr.model;
+package com.betl.mysql.mr.model.v1;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

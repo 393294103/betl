@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import com.betl.mysql.conf.ConfigHelper;
 import com.betl.mysql.mr.mapper.MysqlToHdfsMapper;
-import com.betl.mysql.mr.model.ModelRecordImplCode;
+import com.betl.mysql.mr.model.v1.ModelRecordImplCode;
 import com.betl.mysql.mr.reducer.MysqlToHdfsReducer;
 
 public class MysqlToHdfs implements Tool {

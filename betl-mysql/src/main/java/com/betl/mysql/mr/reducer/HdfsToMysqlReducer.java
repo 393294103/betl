@@ -17,8 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.betl.mysql.conf.ConfigHelper;
-import com.betl.mysql.mr.model.IModelRecord;
-import com.betl.mysql.mr.model.ModelRecordImplCode;
+import com.betl.mysql.mr.model.v1.IModelRecord;
+import com.betl.mysql.mr.model.v1.ModelRecordImplCode;
 
 /**
  * @author zhl
