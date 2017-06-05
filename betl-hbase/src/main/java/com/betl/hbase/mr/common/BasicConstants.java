@@ -30,10 +30,10 @@ public class BasicConstants {
 	public static final String HBASE_REGION_NUM = "hbase.region.num";
 	
 	
-	public static final String MYSQL_JDBC_HOST = "mysql.jdbc.host";
+/*	public static final String MYSQL_JDBC_HOST = "mysql.jdbc.host";
 	public static final String MYSQL_JDBC_SCHEMA = "mysql.jdbc.schema";
 	public static final String MYSQL_JDBC_USERNAME = "mysql.jdbc.username";
-	public static final String MYSQL_JDBC_PASSWORD = "mysql.jdbc.password";
+	public static final String MYSQL_JDBC_PASSWORD = "mysql.jdbc.password";*/
 	
 	
 	

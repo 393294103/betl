@@ -13,107 +13,37 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junitVersion>4.8.1</junitVersion>
-		<commonLangVersion>2.4</commonLangVersion>
-		<curatorFrameworkVersion>2.5.0</curatorFrameworkVersion>
-		<zookeeperVersion>3.4.6</zookeeperVersion>
-		<hadoopVersion>2.4.0</hadoopVersion>
-		<guavaVersion>14.0</guavaVersion>
-		<gsonVersion>2.4</gsonVersion>
-		<slf4jApiVersion>1.7.2</slf4jApiVersion>
-		<logbackVersion>1.1.2</logbackVersion>
-		<cglibNodepVersion>2.2</cglibNodepVersion>
+		<hive.exec.version>0.14.0</hive.exec.version>
 	</properties>
 	
 	<dependencies>
 	
-	
-
-		<dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
-            <version>${cglibNodepVersion}</version>
-        </dependency>
-	
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4jApiVersion}</version>
+	<dependency>
+			<groupId>com.betl</groupId>
+			<artifactId>betl-config</artifactId>
+			<version>${project.parent.version}</version>
 		</dependency>
+
 		
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logbackVersion}</version>
-		</dependency>
-	
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logbackVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-access</artifactId>
-			<version>${logbackVersion}</version>
-		</dependency>
-	
-	
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>${gsonVersion}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guavaVersion}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junitVersion}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commonLangVersion}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-framework</artifactId>
-			<version>${curatorFrameworkVersion}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<version>${zookeeperVersion}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>${hadoopVersion}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs</artifactId>
-			<version>${hadoopVersion}</version>
-		</dependency>
+	<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-exec</artifactId>
+			<version>${hive.exec.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>calcite-avatica</artifactId>
+					<groupId>org.apache.calcite</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>calcite-core</artifactId>
+					<groupId>org.apache.calcite</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>	
 	</dependencies>
+
+
+
 
 
 	<build>

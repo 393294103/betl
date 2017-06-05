@@ -31,7 +31,6 @@ public class CombineSmallFileInputFormat extends CombineFileInputFormat<LongWrit
 			recordReader.initialize(combineFileSplit, context);
 		} catch (InterruptedException e) {
 			new RuntimeException("Error to initalize CombineSmallFileRecordReader.");
-			
 		}
 		 return recordReader;
 	 }

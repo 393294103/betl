@@ -17,11 +17,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.betl</groupId>
-			<artifactId>betl-common</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
+	
 
 		<dependency>
 			<groupId>commons-cli</groupId>

@@ -11,20 +11,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.betl</groupId>
-			<artifactId>betl-config</artifactId>
+			<artifactId>betl-common</artifactId>
 			<version>${project.parent.version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>asm</groupId>
-			<artifactId>asm</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>asm</groupId>
-			<artifactId>asm-util</artifactId>
-			<version>3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -35,7 +23,7 @@
 	
 	
 	<build>
-     <finalName>betl-mysql-0.0.1-SNAPSHOT</finalName>
+     <finalName>betl-mysql-${version}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
