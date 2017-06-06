@@ -44,19 +44,13 @@ public class Orc2TextJob extends Configured implements Tool {
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);
 		
-		StringBuilder inputSb=new StringBuilder();
-		inputSb.append(conf.get(BasicConstants.HDFS_URI_DEFAULT));
-		inputSb.append("/");
-		inputSb.append(conf.get(BasicConstants.HDFS_INPUT_PATH));
-		StringBuilder outputSb=new StringBuilder();
-		outputSb.append(conf.get(BasicConstants.HDFS_URI_DEFAULT));
-		outputSb.append("/");
-		outputSb.append(conf.get(BasicConstants.HDFS_OUTPUT_PATH));
+		String input=conf.get(BasicConstants.HDFS_INPUT_PATH);
+		String output=conf.get(BasicConstants.HDFS_OUTPUT_PATH);
 		
 		FileInputFormat.addInputPath(job,
-				new Path(inputSb.toString()));
+				new Path(input));
 		FileOutputFormat.setOutputPath(job,
-				new Path(outputSb.toString()));
+				new Path(output));
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 

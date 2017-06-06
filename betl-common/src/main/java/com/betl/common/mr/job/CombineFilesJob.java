@@ -7,7 +7,6 @@
 package com.betl.common.mr.job;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -21,6 +20,8 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.betl.common.mr.common.BasicConstants;
 import com.betl.common.mr.input.CombineSmallFileInputFormat;
@@ -33,7 +34,8 @@ import com.betl.common.util.HdfsUtil;
  *
  */
 public class CombineFilesJob extends Configured implements Tool {
-
+	private static Logger logger = LoggerFactory.getLogger(CombineFilesJob.class);
+	
 	private Configuration conf;
 
 	@Override
@@ -47,16 +49,12 @@ public class CombineFilesJob extends Configured implements Tool {
 	}
 	
 	private int getReduceNum(Configuration conf) throws IOException, URISyntaxException{
-		String hdfsUri=conf.get(BasicConstants.HDFS_URI_DEFAULT);
-		FileSystem fs=FileSystem.get(new URI(hdfsUri) ,conf);
+		FileSystem fs=FileSystem.get(conf);
 		HdfsUtil hdfsUtil= new HdfsUtil(fs);
 		
-		StringBuilder inputSb=new StringBuilder();
-		inputSb.append(conf.get(BasicConstants.HDFS_URI_DEFAULT));
-		inputSb.append("/");
-		inputSb.append(conf.get(BasicConstants.HDFS_INPUT_PATH));
-		
-		List<String> listFile =hdfsUtil.listFiles(inputSb.toString());
+		String input=conf.get(BasicConstants.HDFS_INPUT_PATH);
+		logger.debug("getReduceNum,input={}",input);
+		List<String> listFile =hdfsUtil.listFiles(input);
 		Long totalSize=0L;
 		for (String file : listFile) {
 			totalSize=totalSize+hdfsUtil.fileSize(file);
@@ -92,17 +90,11 @@ public class CombineFilesJob extends Configured implements Tool {
 		job.setInputFormatClass(CombineSmallFileInputFormat.class);
 		
 
-		StringBuilder inputSb=new StringBuilder();
-		inputSb.append(conf.get(BasicConstants.HDFS_URI_DEFAULT));
-		inputSb.append("/");
-		inputSb.append(conf.get(BasicConstants.HDFS_INPUT_PATH));
-		StringBuilder outputSb=new StringBuilder();
-		outputSb.append(conf.get(BasicConstants.HDFS_URI_DEFAULT));
-		outputSb.append("/");
-		outputSb.append(conf.get(BasicConstants.HDFS_OUTPUT_PATH));
+		String input =conf.get(BasicConstants.HDFS_INPUT_PATH);
+		String output=conf.get(BasicConstants.HDFS_OUTPUT_PATH);
 		
-		FileInputFormat.addInputPath(job, new Path(inputSb.toString()));
-		FileOutputFormat.setOutputPath(job, new Path(outputSb.toString()));
+		FileInputFormat.addInputPath(job, new Path(input));
+		FileOutputFormat.setOutputPath(job, new Path(output));
 		int exitFlag = job.waitForCompletion(true) ? 0 : 1;
 		return exitFlag;
 	}

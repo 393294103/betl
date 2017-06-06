@@ -24,12 +24,13 @@ import com.betl.common.mr.common.BasicConstants;
 public class Orc2TextMapper extends Mapper<NullWritable, OrcStruct, Text, Text> {
 private static final Logger logger = LoggerFactory.getLogger(Orc2TextMapper.class);
 private static StructObjectInspector input;
-
+String inputSchema;
 
 protected void setup(Context context) throws IOException, InterruptedException {
 	super.setup(context);
-	String inputSchema=context.getConfiguration().get(BasicConstants.ORC_INPUT_SCHEMA);
-	TypeInfo inTI = TypeInfoUtils.getTypeInfoFromTypeString(context.getConfiguration().get(inputSchema));
+	inputSchema=context.getConfiguration().get(BasicConstants.ORC_INPUT_SCHEMA);
+	logger.debug("setup,inputSchema={}",inputSchema);
+	TypeInfo inTI = TypeInfoUtils.getTypeInfoFromTypeString(inputSchema);
 	input = (StructObjectInspector) OrcStruct.createObjectInspector(inTI);
 }
 

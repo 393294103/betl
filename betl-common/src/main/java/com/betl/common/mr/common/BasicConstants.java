@@ -16,7 +16,6 @@ public class BasicConstants {
 	
 	public static final String ORC_INPUT_SCHEMA="orc.input.schema";
 	
-	public static final String HDFS_URI_DEFAULT = "hdfs.uri.default";
 	public static final String HDFS_INPUT_PATH = "hdfs.input.path";
 	public static final String HDFS_OUTPUT_PATH = "hdfs.output.path";
 	public static final String HDFS_COLUMN_SPLIT = "hdfs.column.split";

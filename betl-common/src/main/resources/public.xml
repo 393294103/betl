@@ -6,7 +6,7 @@
 		<value>default</value>
 	</property>
 	<property>
-		<name>hdfs.uri.default</name>
+		<name>fs.defaultFS</name>
 		<value>hdfs://10.111.32.141:8020</value>
 	</property>
 
