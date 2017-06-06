@@ -92,7 +92,8 @@ public class CombineFilesJob extends Configured implements Tool {
 
 		String input =conf.get(BasicConstants.HDFS_INPUT_PATH);
 		String output=conf.get(BasicConstants.HDFS_OUTPUT_PATH);
-		
+		logger.debug("run,input={}",input);
+		logger.debug("run,output={}",output);
 		FileInputFormat.addInputPath(job, new Path(input));
 		FileOutputFormat.setOutputPath(job, new Path(output));
 		int exitFlag = job.waitForCompletion(true) ? 0 : 1;
