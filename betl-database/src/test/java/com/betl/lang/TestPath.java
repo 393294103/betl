@@ -1,0 +1,21 @@
+/**
+ * @Email:zhanghelin@geotmt.com
+ * @Author:zhl
+ * @Date:2017年6月8日
+ * @Copyright ZHL All Rights Reserved.
+ */
+package com.betl.lang;
+
+import java.io.File;
+
+import org.junit.Test;
+
+public class TestPath {
+	
+	
+	@Test
+	public void test1(){
+		System.out.println(File.separator);
+	}
+
+}
