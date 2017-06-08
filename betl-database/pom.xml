@@ -35,7 +35,7 @@
 					</descriptorRefs>
 					<archive>
 					<manifest>
-						<mainClass>com.betl.mysql.mr.MysqlToHdfs</mainClass>
+						<mainClass>com.betl.database.JobMain</mainClass>
 					</manifest>
 				</archive>
 				</configuration>
@@ -61,17 +61,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </project>
