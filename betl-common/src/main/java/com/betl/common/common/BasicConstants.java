@@ -4,7 +4,7 @@
  * @Date:2017年5月10日
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.common.mr.common;
+package com.betl.common.common;
 
 import java.util.HashMap;
 import java.util.Map;

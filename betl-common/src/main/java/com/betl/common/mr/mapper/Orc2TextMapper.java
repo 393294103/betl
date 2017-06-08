@@ -19,7 +19,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.common.mr.common.BasicConstants;
+import com.betl.common.common.BasicConstants;
 
 public class Orc2TextMapper extends Mapper<NullWritable, OrcStruct, Text, Text> {
 private static final Logger logger = LoggerFactory.getLogger(Orc2TextMapper.class);

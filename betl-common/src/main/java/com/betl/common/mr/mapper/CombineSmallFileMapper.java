@@ -13,7 +13,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-import com.betl.common.mr.common.BasicConstants;
+import com.betl.common.common.BasicConstants;
 
 public class CombineSmallFileMapper extends
 Mapper<LongWritable,BytesWritable,Text,BytesWritable>{

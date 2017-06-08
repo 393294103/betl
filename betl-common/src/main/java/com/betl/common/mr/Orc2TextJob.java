@@ -4,7 +4,7 @@
  * @Date:2017年6月5日
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.common.mr.job;
+package com.betl.common.mr;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -16,7 +16,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 
-import com.betl.common.mr.common.BasicConstants;
+import com.betl.common.common.BasicConstants;
 import com.betl.common.mr.mapper.Orc2TextMapper;
 
 public class Orc2TextJob extends Configured implements Tool {

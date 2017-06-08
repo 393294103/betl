@@ -4,7 +4,7 @@
  * @Date:2016年4月8日下午3:46:19
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.common.mr.job;
+package com.betl.common.mr;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -23,7 +23,7 @@ import org.apache.hadoop.util.Tool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.common.mr.common.BasicConstants;
+import com.betl.common.common.BasicConstants;
 import com.betl.common.mr.input.CombineSmallFileInputFormat;
 import com.betl.common.mr.mapper.CombineSmallFileMapper;
 import com.betl.common.mr.reducer.CombineSmallFileReducer;

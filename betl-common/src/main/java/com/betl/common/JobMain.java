@@ -4,16 +4,16 @@
  * @Date:2017年6月5日
  * @Copyright ZHL All Rights Reserved.
  */
-package com.betl.common.mr;
+package com.betl.common;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.util.ToolRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.common.mr.common.BasicConstants;
-import com.betl.common.mr.job.CombineFilesJob;
-import com.betl.common.mr.job.Orc2TextJob;
+import com.betl.common.common.BasicConstants;
+import com.betl.common.mr.CombineFilesJob;
+import com.betl.common.mr.Orc2TextJob;
 import com.betl.config.option.BetlConfiguration;
 
 public class JobMain {

@@ -35,6 +35,7 @@
 		<module>betl-hbase</module>
 		<module>betl-config</module>
 		<module>betl-elastic</module>
+		<module>betl-database</module>
 	</modules>
 	
 	

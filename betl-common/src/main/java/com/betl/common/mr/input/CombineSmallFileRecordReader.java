@@ -18,7 +18,7 @@ import org.apache.hadoop.mapreduce.lib.input.CombineFileSplit;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
 
-import com.betl.common.mr.common.BasicConstants;
+import com.betl.common.common.BasicConstants;
 
 /**
  * @author Administrator
