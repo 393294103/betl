@@ -8,7 +8,6 @@ package com.betl.config.option;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.hadoop.conf.Configuration;
