@@ -68,21 +68,17 @@ public class BetlConfiguration {
 		if (cmd.hasOption("x")) {
 			String xmlPath = cmd.getOptionValue("x");
 			ICompentConfiguration icf = new XmlConfigruation(xmlPath);
-			System.out.println(icf.getConfiguration().get("fs.defaultFS"));
 			conf.addResource(icf.getConfiguration());
 			logger.info("[getConfiguration-x]\t{}",xmlPath);
 		}
-		System.out.println(conf.get("fs.defaultFS"));
 		if (cmd.hasOption("p")) {
 			String propsPath = cmd.getOptionValue("p");
 			ICompentConfiguration icf = new PropsConfigruation(conf,propsPath);
 			conf.addResource(icf.getConfiguration());
 			logger.info("[getConfiguration-p]\t{}",propsPath);
 		}
-		System.out.println(conf.get("fs.defaultFS"));
 		if (cmd.hasOption("D")) {
 			Properties props = cmd.getOptionProperties("D");
-
 			ICompentConfiguration icf = new PropsConfigruation(conf,props);
 			conf.addResource(icf.getConfiguration());
 			logger.info("[getConfiguration-D]\t{}",props.toString());
