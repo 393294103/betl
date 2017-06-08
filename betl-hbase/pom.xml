@@ -14,14 +14,9 @@
 
 
 	<dependencies>
-		<!-- <dependency>
-			<groupId>com.betl</groupId>
-			<artifactId>betl-config</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency> -->
 		<dependency>
 			<groupId>com.betl</groupId>
-			<artifactId>betl-common</artifactId>
+			<artifactId>betl-config</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>

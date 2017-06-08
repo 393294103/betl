@@ -6,8 +6,8 @@
  */
 package com.betl.config.option;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.apache.hadoop.conf.Configuration;
 
@@ -20,8 +20,7 @@ public class XmlConfigruation  implements ICompentConfiguration{
 	
 	public Configuration getConfiguration() throws IOException {
 		Configuration conf =new Configuration();
-		InputStream iStream=XmlConfigruation.class.getResourceAsStream(path);
-		conf.addResource(iStream, path);
+		conf.addResource(new File(path).toURI().toURL());;
 		return conf;
 	}
 	

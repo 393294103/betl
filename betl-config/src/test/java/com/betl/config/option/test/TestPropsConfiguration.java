@@ -7,8 +7,12 @@
 package com.betl.config.option.test;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
-import org.junit.Test;
+import org.apache.hadoop.conf.Configuration;
+
+import com.betl.config.option.BetlConfiguration;
 
 /**
  * @author zhl
@@ -16,8 +20,12 @@ import org.junit.Test;
  */
 public class TestPropsConfiguration {
 	
-	@Test
-	public void test1() throws IOException{
+	public static void main(String[] args) throws IOException {
+		BetlConfiguration bconf = new BetlConfiguration();
+		Configuration conf = bconf.getConfiguration(args);
+		Iterator<Entry<String,String>> iter=conf.iterator();
+		System.out.println(conf.get("hdfs.store.path"));
+		System.out.println(conf.get("betl.job.name"));
 		
 	}
 	

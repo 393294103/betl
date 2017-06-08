@@ -39,6 +39,7 @@ public class HdfsToDatabaseReducer extends Reducer<LongWritable, Text, IModelRec
 			this.cf = cf;
 			ModelRecordImplCode modelRecordImplCode = new ModelRecordImplCode(cf);
 			String code = modelRecordImplCode.gengerate();
+			logger.info("setup,code={}",code);
 			String modelClassPath = modelRecordImplCode.compile(code);
 			clazz = modelRecordImplCode.gengerateClass(modelClassPath);
 		} catch (ClassNotFoundException e) {
@@ -58,15 +59,19 @@ public class HdfsToDatabaseReducer extends Reducer<LongWritable, Text, IModelRec
 			Field field;
 			try {
 				String[] mysqlFields = cf.databaseColumns();
-				int i = 0;
-				Object obj = c.newInstance();// 实例化对象
-				for (String mf : mysqlFields) {
-					field = c.getDeclaredField(mf);
-					field.set(obj, hdfsFields[i]);// 为字段赋值
-					i++;
+				
+				if(hdfsFields.length>=mysqlFields.length){
+					int i = 0;
+					Object obj = c.newInstance();// 实例化对象
+					for (String mf : mysqlFields) {
+						field = c.getDeclaredField(mf);
+						field.set(obj, hdfsFields[i]);// 为字段赋值
+						i++;
+					}
+					context.write((IModelRecord) obj, NullWritable.get());
+				}else{
+					logger.error("reduce,hdfs.columns.size eror,row.detail={}",val.toString());
 				}
-
-				context.write((IModelRecord) obj, NullWritable.get());
 
 			} catch (NoSuchFieldException | SecurityException | InstantiationException | IllegalAccessException e) {
 				logger.error("[reduce-Exception]{}", e.getMessage());

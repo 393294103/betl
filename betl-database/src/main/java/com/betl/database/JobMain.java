@@ -26,6 +26,7 @@ public class JobMain {
 
 		BetlConfiguration bconf = new BetlConfiguration();
 		Configuration conf = bconf.getConfiguration(args);
+		System.out.println(conf.get("fs.defaultFS"));
 		String betlJobName = conf.get(BasicConstants.BETL_JOB_NAME);
 
 		logger.debug("main,conf={}", conf);
@@ -35,7 +36,7 @@ public class JobMain {
 			
 			DatabaseToHdfs databaseToHdfs = new DatabaseToHdfs();
 			databaseToHdfs.setConf(conf);
-			System.out.println(conf.get(BasicConstants.DATABASE_JDBC_DRIVERCLASS));
+			
 			ToolRunner.run(conf, databaseToHdfs, args);
 
 		} else if (BasicConstants.MR_JOB_TYPE.HDFS2DATABASE_JOB.getKey()
@@ -43,6 +44,7 @@ public class JobMain {
 			
 			HdfsToDatabase hdfsToDatabase = new HdfsToDatabase();
 			hdfsToDatabase.setConf(conf);
+			
 			ToolRunner.run(conf, hdfsToDatabase, args);
 		
 		} else {

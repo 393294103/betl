@@ -25,7 +25,7 @@
 	
 	<property>
 		<name>database.jdbc.url</name>
-		<value>jdbc:mysql://121.42.181.229:3306/spiderdb?characterEncoding=UTF-8</value>
+		<value>jdbc:mysql://localhost:3306/spiderdb?characterEncoding=UTF-8</value>
 	</property>
 	
 	<property>
@@ -34,12 +34,12 @@
 	</property>
 	<property>
 		<name>database.jdbc.username</name>
-		<value>spiderdb</value>
+		<value>root</value>
 	</property>
 	
 	<property>
 		<name>database.jdbc.password</name>
-		<value>spiderdb@5237</value>
+		<value>root</value>
 	</property>
 	
 </configuration>

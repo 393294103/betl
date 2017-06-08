@@ -18,7 +18,7 @@ import org.apache.hadoop.util.Tool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.betl.config.option.BetlConfiguration;
+import com.betl.database.common.BasicConstants;
 import com.betl.database.common.ConfigHelper;
 import com.betl.database.mr.mapper.HdfsToDatabaseMapper;
 import com.betl.database.mr.reducer.HdfsToDatabaseReducer;
@@ -28,42 +28,45 @@ import com.betl.database.mr.reducer.HdfsToDatabaseReducer;
  *
  */
 public class HdfsToDatabase implements Tool {
+
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	private Configuration conf;
-
+	
 	@Override
 	public void setConf(Configuration conf) {
 		this.conf = conf;
 	}
 
+	
 	@Override
 	public Configuration getConf() {
 		return this.conf;
 	}
 
+	
 	@Override
 	public int run(String[] args) throws Exception {
-		BetlConfiguration bconf = new BetlConfiguration();
-		Configuration conf = bconf.getConfiguration(args);
-		logger.debug("[main-conf]\t{}", conf);
-
 		ConfigHelper cf = new ConfigHelper(conf);
-		DBConfiguration.configureDB(conf, conf.get("mysql.jdbc.driver.class"), conf.get("mysql.jdbc.url"), conf.get("mysql.jdbc.username"), conf.get("mysql.jdbc.password"));
-
-		Job job = Job.getInstance(conf, conf.get("mapreduce.job.name"));
+		logger.info("run,conf={}",conf);
+		DBConfiguration.configureDB(conf, 
+				conf.get(BasicConstants.DATABASE_JDBC_DRIVERCLASS), 
+				conf.get(BasicConstants.DATABASE_JDBC_URL), 
+				conf.get(BasicConstants.DATABASE_JDBC_USERNAME), 
+				conf.get(BasicConstants.DATABASE_JDBC_PASSWORD));
+		Job job = Job.getInstance(conf);
 		job.setJarByClass(HdfsToDatabase.class);
 		job.setMapperClass(HdfsToDatabaseMapper.class);
 		job.setReducerClass(HdfsToDatabaseReducer.class);
-
+		
 		FileInputFormat.addInputPath(job, new Path(cf.hdfsStorePath()));
 
 		String[] fields = cf.databaseColumns();
-		DBOutputFormat.setOutput(job, conf.get("mysql.table.name"), fields);
+		DBOutputFormat.setOutput(job, conf.get(BasicConstants.DATABASE_TABLE_NAME), fields);
 		job.setMapOutputKeyClass(LongWritable.class);
 		job.setMapOutputValueClass(Text.class);
 
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
-
+	
 }

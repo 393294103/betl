@@ -1,7 +1,7 @@
 /**
  * @Email:zhanghelin@geotmt.com
  * @Author:zhl
- * @Date:2016年12月15日上午10:30:36
+ * @Date:2016年12月15日下午12:00:51
  * @Copyright ZHL All Rights Reserved.
  */
 package com.betl.config.option;
@@ -19,10 +19,9 @@ import org.apache.hadoop.conf.Configuration;
 public class PropsConfigruation implements ICompentConfiguration {
 
 	private Properties props = new Properties();
-
+	Configuration conf;
+	
 	public Configuration getConfiguration() throws IOException {
-		
-		Configuration conf =new Configuration();
 		for (Object key : props.keySet()) {
 			conf.set(key.toString(), props.getProperty(key.toString()));
 		}
@@ -32,13 +31,15 @@ public class PropsConfigruation implements ICompentConfiguration {
 	
 	private String path = null;
 
-	public PropsConfigruation(String path) throws IOException {
+	public PropsConfigruation(Configuration conf,String path) throws IOException {
 		this.path = path;
+		this.conf=conf;
 		loads();
 	}
 
-	public PropsConfigruation(Properties props) {
+	public PropsConfigruation(Configuration conf,Properties props) {
 		this.props=props;
+		this.conf=conf;
 	}
 	
 	private void loads() throws IOException {

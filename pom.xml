@@ -29,13 +29,12 @@
 
 
 	<modules>
+		<module>betl-config</module>
 		<module>betl-common</module>
-		<module>betl-mysql</module>
+		<module>betl-database</module>
 		<module>betl-storm</module>
 		<module>betl-hbase</module>
-		<module>betl-config</module>
 		<module>betl-elastic</module>
-		<module>betl-database</module>
 	</modules>
 	
 	
