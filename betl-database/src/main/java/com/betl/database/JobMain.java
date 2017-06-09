@@ -26,11 +26,8 @@ public class JobMain {
 
 		BetlConfiguration bconf = new BetlConfiguration();
 		Configuration conf = bconf.getConfiguration(args);
-		System.out.println(conf.get("fs.defaultFS"));
 		String betlJobName = conf.get(BasicConstants.BETL_JOB_NAME);
-
 		logger.debug("main,conf={}", conf);
-
 		if (BasicConstants.MR_JOB_TYPE.DATABASE2HDFS_JOB.getKey()
 				.equals(betlJobName)) {
 			

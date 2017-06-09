@@ -28,7 +28,7 @@
 
 
 
-	<modules>
+	 <modules>
 		<module>betl-config</module>
 		<module>betl-common</module>
 		<module>betl-database</module>
@@ -36,7 +36,6 @@
 		<module>betl-hbase</module>
 		<module>betl-elastic</module>
 	</modules>
-	
 	
 	<dependencies>
 			

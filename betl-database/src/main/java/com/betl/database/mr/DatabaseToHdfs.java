@@ -43,12 +43,15 @@ public class DatabaseToHdfs implements Tool {
 	@SuppressWarnings("unchecked")
 	public int run(String[] args) throws Exception {
 		logger.debug("run,conf={}", conf);
+	
 		ConfigHelper cf = new ConfigHelper(conf);
 		ModelRecordImplCode modelRecordImplCode = new ModelRecordImplCode(cf);
 		String code = modelRecordImplCode.gengerate();
+		logger.info("setup,code={}",code);
 		String modelClassPath = modelRecordImplCode.compile(code);
 		@SuppressWarnings("rawtypes")
 		Class clazz = modelRecordImplCode.gengerateClass(modelClassPath);
+		
 		if (clazz == null) {
 			System.exit(1);
 		}

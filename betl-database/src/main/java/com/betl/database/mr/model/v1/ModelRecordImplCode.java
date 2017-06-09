@@ -161,9 +161,9 @@ public class ModelRecordImplCode {
 	public Class gengerateClass(String modelClassPath) throws ClassNotFoundException, MalformedURLException{
 		Class clazz =null;
 		//编译成功，并获取实现类
-    	URL[] urls=new URL[]{new URL("file:/"+modelClassPath)}; 
+    	URL[] urls=new URL[]{new URL("file:/tmp/")}; 
         classLoader = new URLClassLoader(urls); 
-         clazz=classLoader.loadClass("com.betl.database.mr.model.v1.ModelRecordImpl"); 
+        clazz=classLoader.loadClass("com.betl.database.mr.model.v1.ModelRecordImpl"); 
         logger.debug("gengerateClass,clazz={}",clazz);
         return clazz;
 	}
@@ -181,7 +181,7 @@ public class ModelRecordImplCode {
 	    JavaFileObject fileObject = new JavaStringObject("ModelRecordImpl", writer.toString());
 	   
 		//获取项目根路径
-	    String modelClassPath=ModelRecordImplCode.class.getResource("/").getPath();
+	    String modelClassPath="/tmp/";
 	    logger.debug("compile,modelClassPath={}",modelClassPath);
 	    
 	    //开始编译到指定的目录下
